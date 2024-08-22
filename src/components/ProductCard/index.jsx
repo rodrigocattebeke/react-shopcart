@@ -1,0 +1,21 @@
+import { useState } from "react";
+import "./card.css";
+
+export const ProductCard = ({ product = {}, onAddToCart }) => {
+  const handleAddToCart = (product) => {
+    onAddToCart(product);
+  };
+  return (
+    <div className="card" data-id={product.id}>
+      <div className="card-img-container">
+        <img src={product.image} className="card-img" alt={product.title} />
+      </div>
+      <div className="card-body">
+        <h5 className="card-title">{product.title}</h5>
+        <a href="#" className="btn btn-primary" onClick={handleAddToCart}>
+          agregar al carrito
+        </a>
+      </div>
+    </div>
+  );
+};
