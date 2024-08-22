@@ -12,7 +12,7 @@ export const ProductCard = ({ product = {}, onAddToCart }) => {
       </div>
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
-        <a href="#" className="btn btn-primary" onClick={handleAddToCart}>
+        <a href="#" className="btn btn-primary" onClick={() => handleAddToCart(product)}>
           agregar al carrito
         </a>
       </div>
