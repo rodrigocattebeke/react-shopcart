@@ -1,11 +1,9 @@
-import { HomeCatalogue } from "./components/HomeCatalogue";
-import SearchInput from "./components/SearchInput";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <SearchInput></SearchInput>
-      <HomeCatalogue></HomeCatalogue>
+      <HomePage></HomePage>
     </>
   );
 }

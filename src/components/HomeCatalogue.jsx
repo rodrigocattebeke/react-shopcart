@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import simpleFetch from "../hooks/SimpleFetch";
-import { ProductList } from "./ProductList";
+import { ProductList } from "./Product/ProductList";
 
 const mainUrl = "https://fakestoreapi.com",
   productsUrl = "https://fakestoreapi.com/products";
 
-export const HomeCatalogue = () => {
+export const HomeCatalogue = ({ onAddToCart }) => {
   const [catalogue, setCatalogue] = useState([]);
-
-  const handleAddToCart = (product) => {
-    console.log(product);
-  };
 
   const loadCatalogue = async () => {
     const data = await simpleFetch(productsUrl);
@@ -21,5 +17,5 @@ export const HomeCatalogue = () => {
     loadCatalogue();
   }, []);
 
-  return <ProductList catalogue={catalogue} onAddToCart={handleAddToCart}></ProductList>;
+  return <ProductList catalogue={catalogue} onAddToCart={onAddToCart}></ProductList>;
 };

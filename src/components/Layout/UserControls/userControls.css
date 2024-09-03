@@ -1,0 +1,55 @@
+
+
+.user-controls-container{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.user-controls-container > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.cart-counter{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    right: 0;
+    top: -5px;
+    background-color: var(--secondary-color);
+    margin: 0;
+    border-radius: 50%;
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--font-secondary-color);
+    visibility: hidden;
+}
+
+.cart-counter.active{
+    visibility: visible;
+}
+
+.user-controls-container span{
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: .2s;
+}
+
+.user-controls-container  span:hover{
+    cursor: pointer;
+    color: var(--primary-color-hover)
+}
+
+
+.shopcart-body-items{
+    height: 80%;
+}
+
+.shopcart-body-actions{
+    height: 20%;
+}

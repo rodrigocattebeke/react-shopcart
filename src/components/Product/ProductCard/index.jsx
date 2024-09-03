@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./card.css";
 
 export const ProductCard = ({ product = {}, onAddToCart }) => {
@@ -12,9 +11,10 @@ export const ProductCard = ({ product = {}, onAddToCart }) => {
       </div>
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
-        <a href="#" className="btn btn-primary" onClick={() => handleAddToCart(product)}>
+        <p className="card-text">${product.price}</p>
+        <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>
           agregar al carrito
-        </a>
+        </button>
       </div>
     </div>
   );
