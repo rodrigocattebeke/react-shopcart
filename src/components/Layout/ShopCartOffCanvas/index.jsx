@@ -1,6 +1,6 @@
-import { CartItems } from "./CartItems";
+import { CartProducts } from "./CartProducts";
 
-export const ShopCartOffCanvas = ({ shopCartItems = {} }) => {
+export const ShopCartOffCanvas = () => {
   return (
     <div className="offcanvas offcanvas-end shopcart-menu" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div className="offcanvas-header shopcart-header">
@@ -11,7 +11,7 @@ export const ShopCartOffCanvas = ({ shopCartItems = {} }) => {
       </div>
       <div className="offcanvas-body shopcart-body">
         <div className="shopcart-body-items overflow-y-auto overflow-x-hidden">
-          <CartItems shopCartItems={shopCartItems}></CartItems>
+          <CartProducts></CartProducts>
         </div>
         <div className="shopcart-body-actions d-flex flex-column align-items-center justify-content-between">
           <div className="total-price d-flex justify-content-between w-100">

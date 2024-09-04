@@ -5,7 +5,7 @@ import { ProductList } from "./Product/ProductList";
 const mainUrl = "https://fakestoreapi.com",
   productsUrl = "https://fakestoreapi.com/products";
 
-export const HomeCatalogue = ({ onAddToCart }) => {
+export const HomeCatalogue = () => {
   const [catalogue, setCatalogue] = useState([]);
 
   const loadCatalogue = async () => {
@@ -17,5 +17,5 @@ export const HomeCatalogue = ({ onAddToCart }) => {
     loadCatalogue();
   }, []);
 
-  return <ProductList catalogue={catalogue} onAddToCart={onAddToCart}></ProductList>;
+  return <ProductList catalogue={catalogue}></ProductList>;
 };
