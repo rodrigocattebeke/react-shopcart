@@ -7,6 +7,16 @@
     --background-color-primary: rgb(255, 255, 255);
 }
 
+/* REUSABLE CLASS */
+.shopIcon{
+    color: var(--primary-color);
+    cursor:pointer;
+}
+
+.shopIcon:hover{
+    color: var(--primary-color-hover);
+}
+
 html{
     font-size: 16px;
 }
