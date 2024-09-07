@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../Context/CartContext";
 import "./shopCart.css";
 
 export const CartProducts = ({ product = {} }) => {
   const { cartState, modifyProductQuantity, removeProductFromCart } = useContext(CartContext);
-  const [inputValue, setInputValue] = useState(1);
+  const [inputValue, setInputValue] = useState(product.quantity);
+
+  useEffect(() => {
+    setInputValue(product.quantity);
+  }, [product.quantity]);
 
   const handleChange = (e) => {
     if (/\D+/.test(e.target.value)) return;
@@ -24,7 +28,8 @@ export const CartProducts = ({ product = {} }) => {
   };
 
   const updateProductQuantity = () => {
-    const updatedProduct = { ...product, quantity: inputValue };
+    const updatedProduct = { ...product, quantity: inputValue, totalPrice: product.price * inputValue };
+
     modifyProductQuantity(updatedProduct);
   };
 

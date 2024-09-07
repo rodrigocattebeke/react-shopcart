@@ -6,14 +6,13 @@ const getTotalPrice = (products = {}) => {
   if (products.length == 0) return;
   let totalPrice = 0;
   for (let i = 0; i < products.length; i++) {
-    totalPrice += products[i].price;
+    totalPrice += products[i].totalPrice;
   }
-  return totalPrice;
+  return totalPrice.toFixed(2);
 };
 
 export const ShopCartOffCanvas = () => {
   const { cartState } = useContext(CartContext);
-
   return (
     <div className="offcanvas offcanvas-end shopcart-menu" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div className="offcanvas-header shopcart-header">
@@ -30,7 +29,7 @@ export const ShopCartOffCanvas = () => {
             <h5>{getTotalPrice(cartState.cartProducts)}</h5>
           </div>
           <button type="button" className="btn btn-success">
-            Finalizar pedido.
+            Finalizar pedido
           </button>
         </div>
       </div>

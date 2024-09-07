@@ -1,0 +1,14 @@
+
+
+.product-section-1{
+    display: flex;
+    width: 100%;;
+}
+
+.product-img{
+    width: 50%;
+}
+
+.product-info{
+    width: 50%;
+}

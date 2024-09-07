@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { act, createContext, useReducer } from "react";
 
 const CartContext = createContext();
 
@@ -32,18 +32,23 @@ export const CartProvider = ({ children }) => {
     const existingProduct = cartState.cartProducts.find((item) => item.id == product.id);
 
     if (existingProduct) {
-      let updatedProducts = cartState.cartProducts.map((item) => (item.id == existingProduct.id ? { ...existingProduct, quantity: existingProduct.quantity + 1 } : item));
-
-      updatedProducts = { ...updatedProducts, price: updatedProducts.price * updatedProducts.quantity };
+      let updatedProducts = cartState.cartProducts.map((item) =>
+        item.id == existingProduct.id
+          ? {
+              ...existingProduct,
+              quantity: existingProduct.quantity + 1,
+              totalPrice: existingProduct.price * (existingProduct.quantity + 1),
+            }
+          : item
+      );
 
       const action = {
         type: cartTypes.modifyQuantity,
         payload: updatedProducts,
       };
-
       dispatch(action);
     } else {
-      const newProducts = [...cartState.cartProducts, { ...product, quantity: 1 }];
+      const newProducts = [...cartState.cartProducts, { ...product, quantity: 1, totalPrice: product.price }];
       const action = {
         type: cartTypes.addProduct,
         payload: newProducts,
@@ -54,9 +59,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const modifyProductQuantity = (product) => {
+    const updatedProducts = cartState.cartProducts.map((item) => (item.id == product.id ? product : item));
+
     const action = {
       type: cartTypes.modifyQuantity,
-      payload: product,
+      payload: updatedProducts,
     };
 
     dispatch(action);
