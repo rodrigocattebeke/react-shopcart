@@ -1,34 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../Context/CartContext";
 import "./shopCart.css";
+import { QuantitySelector } from "../../Common/QuantitySelector";
 
 export const CartProducts = ({ product = {} }) => {
   const { cartState, modifyProductQuantity, removeProductFromCart } = useContext(CartContext);
-  const [inputValue, setInputValue] = useState(product.quantity);
+  const [productQuantity, setProductQuantity] = useState(product.quantity);
 
-  useEffect(() => {
-    setInputValue(product.quantity);
-  }, [product.quantity]);
-
-  const handleChange = (e) => {
-    if (/\D+/.test(e.target.value)) return;
-    setInputValue(e.target.value);
-  };
-
-  const incrementOrDecrement = (action) => {
-    if (action == "decrement" && inputValue == 1) return;
-    switch (action) {
-      case "increment":
-        return setInputValue(inputValue + 1);
-      case "decrement":
-        return setInputValue(inputValue - 1);
-      default:
-        break;
-    }
+  const handleQuantity = (quantity) => {
+    setProductQuantity(quantity);
   };
 
   const updateProductQuantity = () => {
-    const updatedProduct = { ...product, quantity: inputValue, totalPrice: product.price * inputValue };
+    const updatedProduct = { ...product, quantity: productQuantity, totalPrice: product.price * productQuantity };
 
     modifyProductQuantity(updatedProduct);
   };
@@ -46,24 +30,8 @@ export const CartProducts = ({ product = {} }) => {
         <p className="small my-0">${product.price}</p>
         <div className="d-flex">
           <p className="my-0">Cantidad:</p>
-          <div className="shopCart-quantity">
-            <button
-              onClick={() => {
-                incrementOrDecrement("decrement");
-              }}
-            >
-              -
-            </button>
-            <input type="text" value={inputValue} onChange={handleChange} />
-            <button
-              onClick={() => {
-                incrementOrDecrement("increment");
-              }}
-            >
-              +
-            </button>
-          </div>
-          <button className={`update-product-button ${product.quantity == inputValue ? "" : "active"}`} onClick={updateProductQuantity}>
+          <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector>
+          <button className={`update-product-button ${product.quantity == productQuantity ? "" : "active"}`} onClick={updateProductQuantity}>
             Actualizar
           </button>
         </div>

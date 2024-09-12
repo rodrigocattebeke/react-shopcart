@@ -5,8 +5,8 @@ import { ViewProductPage } from "./pages/ViewProductPage";
 function App() {
   return (
     <CartProvider>
-      {/* <HomePage></HomePage> */}
-      <ViewProductPage></ViewProductPage>
+      <HomePage></HomePage>
+      {/* <ViewProductPage></ViewProductPage> */}
     </CartProvider>
   );
 }
