@@ -1,4 +1,4 @@
-import { act, createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const CartContext = createContext();
 
@@ -32,11 +32,13 @@ export const CartProvider = ({ children }) => {
     const existingProduct = cartState.cartProducts.find((item) => item.id == product.id);
 
     if (existingProduct) {
+      let updatedQuantity = 1;
+      if (product.quantity) updatedQuantity = product.quantity;
       let updatedProducts = cartState.cartProducts.map((item) =>
         item.id == existingProduct.id
           ? {
               ...existingProduct,
-              quantity: existingProduct.quantity + 1,
+              quantity: existingProduct.quantity + updatedQuantity,
               totalPrice: existingProduct.price * (existingProduct.quantity + 1),
             }
           : item
@@ -48,7 +50,11 @@ export const CartProvider = ({ children }) => {
       };
       dispatch(action);
     } else {
-      const newProducts = [...cartState.cartProducts, { ...product, quantity: 1, totalPrice: product.price }];
+      let quantity = 1;
+      // VERIFY PRODUCT QUANTITY
+      if (product.quantity) quantity = product.quantity;
+
+      const newProducts = [...cartState.cartProducts, { ...product, quantity, totalPrice: product.price }];
       const action = {
         type: cartTypes.addProduct,
         payload: newProducts,

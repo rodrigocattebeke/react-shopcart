@@ -1,0 +1,49 @@
+:root{
+    --background-color-primary: rgb(255, 255, 255);
+    --button-background-color: rgb(0, 51, 255);
+    --button-font-color: rgb(255, 255, 255);
+    --button-font-hover-color: rgb(175, 175, 175);
+    --button-hover-color: rgb(1, 36, 173);
+    --button-active-background-color: rgb(4, 26, 116);
+    --font-primary-color: rgb(0, 0, 0);
+    --font-secondary-color: rgb(255, 255, 255);
+    --primary-color: rgb(0, 0, 0);
+    --primary-color-hover: rgb(132, 132, 132);
+    --secondary-color: rgb(132, 132, 132);
+    --loader-color-1: rgb(255, 150, 150);
+    --loader-color-2: rgb(227, 227, 227);
+    --loader-color-3: rgb(108, 105, 194);
+}
+
+html{
+    font-size: 16px;
+}
+
+/* BUTTONS */
+.button-color-primary{
+    background-color:var(--button-background-color);
+    color: var(--button-font-color)
+}
+
+.button-color-primary:hover{
+    background-color: var(--button-hover-color);
+    color: var(--button-font-hover-color);
+}
+
+.button-color-primary:active{
+    background-color: var(--button-active-background-color) !important;
+    color: var(--button-font-hover-color) !important;
+}
+
+
+
+/* ICONS */
+.shopIcon{
+    color: var(--primary-color);
+    cursor:pointer;
+}
+
+.shopIcon:hover{
+    color: var(--primary-color-hover);
+}
+

@@ -3,6 +3,7 @@ import "./QuantitySelector.css";
 
 export const QuantitySelector = ({ initialQuantity = 0, onQuantityChange }) => {
   const [inputValue, setInputValue] = useState(initialQuantity);
+  const [previusInputValue, setPreviusInputValue] = useState(1);
 
   const incrementOrDecrement = (action) => {
     if (/^\s*$/.test(inputValue) || inputValue < 1) return setInputValue(1);
@@ -16,7 +17,7 @@ export const QuantitySelector = ({ initialQuantity = 0, onQuantityChange }) => {
   };
 
   useEffect(() => {
-    onQuantityChange(inputValue);
+    if (inputValue !== "") onQuantityChange(inputValue);
   }, [inputValue, onQuantityChange]);
 
   useEffect(() => {
@@ -25,7 +26,12 @@ export const QuantitySelector = ({ initialQuantity = 0, onQuantityChange }) => {
 
   const handleChange = (e) => {
     if (/\D+/.test(e.target.value)) return;
+    if (!/^\s*$/.test(e.target.value)) setPreviusInputValue(parseInt(e.target.value));
     setInputValue(e.target.value);
+  };
+
+  const handleBlur = () => {
+    if (/^\s*$/.test(inputValue)) setInputValue(previusInputValue);
   };
 
   return (
@@ -37,7 +43,7 @@ export const QuantitySelector = ({ initialQuantity = 0, onQuantityChange }) => {
       >
         -
       </button>
-      <input type="text" value={inputValue} onChange={handleChange} />
+      <input type="text" value={inputValue} onChange={handleChange} onBlur={handleBlur} />
       <button
         onClick={() => {
           incrementOrDecrement("increment");

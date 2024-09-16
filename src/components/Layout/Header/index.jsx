@@ -1,9 +1,9 @@
 import { NavBar } from "../NavBar";
 import "./header.css";
-export const Header = ({ shopCartItems = {} }) => {
+export const Header = () => {
   return (
     <header className="sticky-top">
-      <NavBar shopCartItems={shopCartItems}></NavBar>
+      <NavBar></NavBar>
     </header>
   );
 };

@@ -1,0 +1,25 @@
+.loader-container{
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader{
+    width: 6rem;
+}
+
+.column1{
+    fill: var(--loader-color-1);
+}
+
+.column2{
+    fill: var(--loader-color-2);
+}
+
+.column3{
+    fill: var(--loader-color-3);
+}

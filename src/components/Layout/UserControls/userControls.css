@@ -1,14 +1,12 @@
-
-
 .user-controls-container{
     display: flex;
+    padding-top: .5rem ;
     align-items: center;
     justify-content: right;
 }
 
 .user-controls-container > div {
     display: flex;
-    align-items: center;
     position: relative;
 }
 
