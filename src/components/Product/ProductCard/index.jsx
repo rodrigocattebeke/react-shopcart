@@ -11,8 +11,10 @@ export const ProductCard = ({ product = {} }) => {
         <img src={product.image} className="card-img" alt={product.title} />
       </Link>
       <div className="card-body">
-        <h5 className="card-title">{product.title}</h5>
-        <p className="card-text">${product.price}</p>
+        <Link to={`/products/${product.id}`}>
+          <h4 className="card-title">{product.title}</h4>
+          <p className="card-price">${product.price}</p>
+        </Link>
         <button className="btn btn-primary" onClick={() => addProductToCart(product)}>
           agregar al carrito
         </button>

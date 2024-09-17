@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../Context/CartContext";
-import "./shopCart.css";
+import styles from "./shopCart.module.css";
 import { QuantitySelector } from "../../Common/QuantitySelector";
+import { Link } from "react-router-dom";
 
 export const CartProducts = ({ product = {} }) => {
   const { cartState, modifyProductQuantity, removeProductFromCart } = useContext(CartContext);
@@ -26,12 +27,14 @@ export const CartProducts = ({ product = {} }) => {
         <img src={product.image} alt={product.title} className="img-fluid"></img>
       </div>
       <div className="col-8">
-        <p className="my-0">{product.title}</p>
-        <p className="small my-0">${product.price}</p>
+        <Link to={`/products/${product.id}`} className="product-link">
+          <p className={styles.productTitle}>{product.title}</p>
+        </Link>
+        <p className={`${styles.productPrice} small my-0`}>${product.price}</p>
         <div className="d-flex">
           <p className="my-0">Cantidad:</p>
           <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector>
-          <button className={`update-product-button ${product.quantity == productQuantity ? "" : "active"}`} onClick={updateProductQuantity}>
+          <button className={`${styles.updateProductButton} ${product.quantity == productQuantity ? "" : styles.active}`} onClick={updateProductQuantity}>
             Actualizar
           </button>
         </div>

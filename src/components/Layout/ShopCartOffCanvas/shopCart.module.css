@@ -1,5 +1,14 @@
+.productPrice{
+    color: var(--font-price-color);
+}
 
-.update-product-button{
+.productTitle{
+    color: var(--font-primary-color);
+    margin-bottom: .2rem ;
+    line-height: 1.2rem;
+}
+
+.updateProductButton{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +21,7 @@
     transition: opacity .6s ease;
 }
 
-.update-product-button.active{
+.updateProductButton.active{
     visibility: visible;
     opacity: 1;
 }

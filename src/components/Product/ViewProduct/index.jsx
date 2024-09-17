@@ -5,13 +5,16 @@ import simpleFetch from "../../../hooks/SimpleFetch";
 import { CartContext } from "../../../Context/CartContext";
 import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
+import { useLocation } from "react-router-dom";
 
 export const ViewProduct = () => {
   const { addProductToCart } = useContext(CartContext);
 
+  const Location = useLocation();
+
+  const [isSucces, setIsSucces] = useState(true);
   const [productQuantity, setProductQuantity] = useState(1);
   const [product, setProduct] = useState({});
-  const [isSucces, setIsSucces] = useState(true);
 
   const fakeStoreApiMainUrl = "https://fakestoreapi.com";
   const fakeStoreApiProducts = "https://fakestoreapi.com/products/";
@@ -27,6 +30,7 @@ export const ViewProduct = () => {
   };
 
   const getProduct = async () => {
+    setProduct({});
     const productId = location.pathname.split("/products/")[1];
     const productUrl = `${fakeStoreApiProducts + productId}`;
     const result = await simpleFetch(productUrl);
@@ -36,7 +40,7 @@ export const ViewProduct = () => {
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [Location.pathname]);
 
   // VALIDATE PRODUCT
   if (!isSucces) return <ErrorScreen></ErrorScreen>;

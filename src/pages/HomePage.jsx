@@ -4,7 +4,7 @@ import { Header } from "../components/Layout/Header";
 export const HomePage = () => {
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <HomeCatalogue></HomeCatalogue>
     </>
   );

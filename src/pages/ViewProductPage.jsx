@@ -4,7 +4,7 @@ import { ViewProduct } from "../components/Product/ViewProduct";
 export const ViewProductPage = () => {
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <ViewProduct></ViewProduct>
     </>
   );
