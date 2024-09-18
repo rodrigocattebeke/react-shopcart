@@ -3,16 +3,14 @@ import simpleFetch from "../hooks/SimpleFetch";
 import { ProductList } from "./Product/ProductList";
 import { Loader } from "./Common/Loader";
 import { ErrorScreen } from "./Common/ErrorScreen";
-
-const mainUrl = "https://fakestoreapi.com",
-  productsUrl = "https://fakestoreapi.com/products";
+import { apiUrls } from "../config/apiUrls";
 
 export const HomeCatalogue = () => {
   const [catalogue, setCatalogue] = useState([]);
   const [isSucces, setIsSucces] = useState(true);
 
   const loadCatalogue = async () => {
-    const result = await simpleFetch(productsUrl);
+    const result = await simpleFetch(apiUrls.products);
     setIsSucces(result.isSucces);
     setCatalogue(result.data);
   };

@@ -1,5 +1,21 @@
 import { Link } from "react-router-dom";
+import simpleFetch from "../../../hooks/simpleFetch";
+import { apiUrls } from "../../../config/apiUrls";
+import { useEffect, useState } from "react";
+import styles from "./headerLinks.module.css";
+
 export const HeaderLinks = ({ responsiveClass = "" }) => {
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    let result = await simpleFetch(apiUrls.categories);
+    setCategories(result.data);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <section className={`navbar navbar-expand-md header-links-container ${responsiveClass}`}>
       <div className="container-fluid">
@@ -11,26 +27,20 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
         </button>
         <div className="collapse navbar-collapse order-3" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <Link className="nav-link dropdown-toggle" to="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="">
-                    Action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="">
-                    Another action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="">
-                    Something else here
-                  </Link>
-                </li>
+            <li className="nav-item dropdown ">
+              <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorías
+              </div>
+              <ul className={`dropdown-menu ${styles.dropdownMenu}`}>
+                {categories.length < 1
+                  ? ""
+                  : categories.map((category, index) => (
+                      <li key={index}>
+                        <Link className="dropdown-item" to={`/category/${category}`}>
+                          {category}
+                        </Link>
+                      </li>
+                    ))}
               </ul>
             </li>
           </ul>

@@ -6,6 +6,7 @@ import { CartContext } from "../../../Context/CartContext";
 import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
 import { useLocation } from "react-router-dom";
+import { apiUrls } from "../../../config/apiUrls";
 
 export const ViewProduct = () => {
   const { addProductToCart } = useContext(CartContext);
@@ -15,9 +16,6 @@ export const ViewProduct = () => {
   const [isSucces, setIsSucces] = useState(true);
   const [productQuantity, setProductQuantity] = useState(1);
   const [product, setProduct] = useState({});
-
-  const fakeStoreApiMainUrl = "https://fakestoreapi.com";
-  const fakeStoreApiProducts = "https://fakestoreapi.com/products/";
 
   const handleQuantity = (quantity) => {
     setProductQuantity(quantity);
@@ -32,7 +30,7 @@ export const ViewProduct = () => {
   const getProduct = async () => {
     setProduct({});
     const productId = location.pathname.split("/products/")[1];
-    const productUrl = `${fakeStoreApiProducts + productId}`;
+    const productUrl = apiUrls.productDetails(productId);
     const result = await simpleFetch(productUrl);
     setIsSucces(result.isSucces);
     setProduct(result.data);
