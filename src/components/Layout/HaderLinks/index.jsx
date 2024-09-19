@@ -28,7 +28,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
         <div className="collapse navbar-collapse order-3" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item dropdown ">
-              <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div className={`nav-link dropdown-toggle ${styles.categoriesDropdown}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorías
               </div>
               <ul className={`dropdown-menu ${styles.dropdownMenu}`}>

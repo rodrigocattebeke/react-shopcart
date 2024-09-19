@@ -27,16 +27,15 @@ export const ViewProduct = () => {
     addProductToCart(shopProduct);
   };
 
-  const getProduct = async () => {
-    setProduct({});
-    const productId = location.pathname.split("/products/")[1];
-    const productUrl = apiUrls.productDetails(productId);
-    const result = await simpleFetch(productUrl);
-    setIsSucces(result.isSucces);
-    setProduct(result.data);
-  };
-
   useEffect(() => {
+    const getProduct = async () => {
+      setProduct({});
+      const productId = Location.pathname.split("/products/")[1];
+      const productUrl = apiUrls.productDetails(productId);
+      const result = await simpleFetch(productUrl);
+      setIsSucces(result.isSucces);
+      setProduct(result.data);
+    };
     getProduct();
   }, [Location.pathname]);
 

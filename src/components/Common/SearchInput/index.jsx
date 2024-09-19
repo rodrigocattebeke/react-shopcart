@@ -20,7 +20,7 @@ const SearchInput = ({ responsiveClass = "" }) => {
 
   return (
     <div className={`${responsiveClass}`}>
-      <form className={`container input-group my-3`}>
+      <form className={`container input-group`}>
         <input type="text" name="searchInput" className="form-control" placeholder="Buscar producto" aria-label="search" aria-describedby="search-button" value={formData.searchInput} onChange={onFormInputChange} />
         <button name="searchButton" className="btn btn-outline-secondary" type="button" id="search-button" onClick={handleSubmit}>
           Buscar

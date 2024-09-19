@@ -1,3 +1,7 @@
+.categoriesDropdown{
+    font-size: 1.1rem;
+    padding: .5rem 0 !important;
+}
 
 @media screen and (min-width: 770px) {
     .dropdownMenu{
