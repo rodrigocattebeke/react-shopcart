@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../Context/CartContext";
 import styles from "./shopCart.module.css";
 import { QuantitySelector } from "../../Common/QuantitySelector";
@@ -14,7 +14,6 @@ export const CartProducts = ({ product = {} }) => {
 
   const updateProductQuantity = () => {
     const updatedProduct = { ...product, quantity: productQuantity, totalPrice: product.price * productQuantity };
-
     modifyProductQuantity(updatedProduct);
   };
 

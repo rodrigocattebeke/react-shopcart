@@ -4,12 +4,12 @@ export default async function simpleFetch(url) {
     data = await fetch(url);
     res = {
       data: await data.json(),
-      isSucces: true,
+      isSuccess: true,
     };
   } catch (error) {
     res = {
       data: error,
-      isSucces: false,
+      isSuccess: false,
     };
   }
 

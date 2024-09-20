@@ -1,73 +1,78 @@
 import { useContext, useEffect, useState } from "react";
 import { QuantitySelector } from "../../Common/QuantitySelector";
-import "./ViewProduct.css";
-import simpleFetch from "../../../hooks/SimpleFetch";
+import styles from "./ViewProduct.module.css";
+import simpleFetch from "../../../hooks/simpleFetch";
 import { CartContext } from "../../../Context/CartContext";
 import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { apiUrls } from "../../../config/apiUrls";
 
 export const ViewProduct = () => {
   const { addProductToCart } = useContext(CartContext);
 
-  const Location = useLocation();
+  const location = useLocation();
 
-  const [isSucces, setIsSucces] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(true);
   const [productQuantity, setProductQuantity] = useState(1);
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
 
   const handleQuantity = (quantity) => {
     setProductQuantity(quantity);
   };
 
   const handleAddToCart = () => {
-    let shopProduct = product;
-    shopProduct.quantity = productQuantity;
+    const shopProduct = { ...product, quantity: productQuantity };
     addProductToCart(shopProduct);
   };
 
   useEffect(() => {
+    const productId = location.pathname.split("/products/")[1];
+    const productUrl = apiUrls.productDetails(productId);
     const getProduct = async () => {
-      setProduct({});
-      const productId = Location.pathname.split("/products/")[1];
-      const productUrl = apiUrls.productDetails(productId);
+      setProduct(null);
       const result = await simpleFetch(productUrl);
-      setIsSucces(result.isSucces);
+      setIsSuccess(result.isSuccess);
       setProduct(result.data);
     };
     getProduct();
-  }, [Location.pathname]);
+  }, [location.pathname]);
 
   // VALIDATE PRODUCT
-  if (!isSucces) return <ErrorScreen></ErrorScreen>;
+  if (!isSuccess) return <ErrorScreen />;
 
-  return Object.keys(product) == 0 ? (
-    <Loader></Loader>
+  return !product ? (
+    <Loader />
   ) : (
     <section className="container">
-      <div className="product-section-1 mt-3">
-        <div className="product-img">
-          <img src={product.image}></img>
+      <div className={`${styles.productSection1} mt-3`}>
+        <div className={`${styles.productImg}`}>
+          <img src={product?.image}></img>
         </div>
-        <div className="product-info-container">
-          <div className="product-info">
-            <h2>{product.title}</h2>
-            <p>Precio: ${product.price}</p>
+        <div className={`${styles.productInfoContainer}`}>
+          <div className={`${styles.productInfo}`}>
+            <h2>{product?.title}</h2>
+            <small>
+              Categoría:{" "}
+              <Link to={`/category/${product?.category}`} className="product-link">
+                {product?.category}
+              </Link>
+            </small>
+            <p>Precio: ${product?.price}</p>
           </div>
-          <div className="addCart-container">
-            <QuantitySelector initialQuantity={1} onQuantityChange={handleQuantity}></QuantitySelector>
+          <div className={`${styles.addCartContainer}`}>
+            <QuantitySelector initialQuantity={1} onQuantityChange={handleQuantity} />
             <button className="btn button-color-primary" onClick={handleAddToCart}>
               <span className="material-symbols-outlined">add_shopping_cart</span> Comprar
             </button>
           </div>
         </div>
       </div>
-      <div className="product-section-2 mt-5">
+      <div className={`${styles.productSection2} mt-5`}>
         <p>Descripción del producto</p>
         <hr></hr>
-        <div className="product-description">
-          <p>{product.description}</p>
+        <div className={`${styles.productDescription}`}>
+          <p>{product?.description}</p>
         </div>
       </div>
     </section>

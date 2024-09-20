@@ -7,11 +7,11 @@ import { apiUrls } from "../config/apiUrls";
 
 export const HomeCatalogue = () => {
   const [catalogue, setCatalogue] = useState([]);
-  const [isSucces, setIsSucces] = useState(true);
+  const [isSuccess, setIsSucces] = useState(true);
 
   const loadCatalogue = async () => {
     const result = await simpleFetch(apiUrls.products);
-    setIsSucces(result.isSucces);
+    setIsSucces(result.isSuccess);
     setCatalogue(result.data);
   };
 
@@ -19,5 +19,5 @@ export const HomeCatalogue = () => {
     loadCatalogue();
   }, []);
 
-  return catalogue.length == 0 ? <Loader></Loader> : !isSucces ? <ErrorScreen></ErrorScreen> : <ProductList catalogue={catalogue}></ProductList>;
+  return catalogue.length == 0 ? <Loader></Loader> : !isSuccess ? <ErrorScreen></ErrorScreen> : <ProductList catalogue={catalogue}></ProductList>;
 };

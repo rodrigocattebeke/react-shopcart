@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom";
-import simpleFetch from "../../hooks/SimpleFetch";
-import { apiUrls } from "../../config/apiUrls";
+import simpleFetch from "../hooks/SimpleFetch";
+import { apiUrls } from "../config/apiUrls";
 import { useEffect, useState } from "react";
-import { ProductList } from "../Product/ProductList";
-import { ErrorScreen } from "../Common/ErrorScreen";
-import { Loader } from "../Common/Loader";
+import { ProductList } from "../components/Product/ProductList";
+import { ErrorScreen } from "../components/Common/ErrorScreen";
+import { Loader } from "../components/Common/Loader";
 
-export const ViewCategoryProducts = () => {
+export const ViewCategoryProductsPage = () => {
   const Location = useLocation();
 
   const [categoryData, setCategoryData] = useState([]);
@@ -20,7 +20,7 @@ export const ViewCategoryProducts = () => {
       setLoaderIsActive(true);
       try {
         const result = await simpleFetch(`${apiUrls.categoryDetail(`${category}`)}`);
-        if (result.isSucces) {
+        if (result.isSuccess) {
           setCategoryData(result.data);
           if (result.data.length == 0) {
             setHasError(true);

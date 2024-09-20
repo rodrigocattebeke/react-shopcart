@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
           ? {
               ...existingProduct,
               quantity: existingProduct.quantity + updatedQuantity,
-              totalPrice: existingProduct.price * (existingProduct.quantity + 1),
+              totalPrice: existingProduct.price * (existingProduct.quantity + updatedQuantity),
             }
           : item
       );
