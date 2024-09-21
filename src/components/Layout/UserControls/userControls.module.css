@@ -1,16 +1,16 @@
-.user-controls-container{
+.userControlsContainer{
     display: flex;
     padding-top: .5rem ;
     align-items: center;
     justify-content: right;
 }
 
-.user-controls-container > div {
+.userControlsContainer > div {
     display: flex;
     position: relative;
 }
 
-.cart-counter{
+.cartCounter{
     display: flex;
     position: absolute;
     align-items: center;
@@ -28,26 +28,27 @@
     visibility: hidden;
 }
 
-.cart-counter.active{
+.cartCounter.active{
     visibility: visible;
 }
 
-.user-controls-container span{
+.userControlPerson, .userControlCart{
     font-size: 2.5rem;
     color: var(--primary-color);
     transition: .2s;
+    text-decoration: none;
 }
 
-.user-controls-container  span:hover{
+.userControlPerson:hover, .userControlCart:hover{
     cursor: pointer;
     color: var(--primary-color-hover)
 }
 
 
-.shopcart-body-items{
+.shopcartBodyItems{
     height: 80%;
 }
 
-.shopcart-body-actions{
+.shopcartBodyActions{
     height: 20%;
 }

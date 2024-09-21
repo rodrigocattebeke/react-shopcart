@@ -1,5 +1,5 @@
-import { UserLoginForm } from "../components/UserLoginForm";
+import { UserLoginAndRegisterForm } from "../components/UserLoginAndRegisterForm";
 
 export const UserLoginPage = () => {
-  return <UserLoginForm></UserLoginForm>;
+  return <UserLoginAndRegisterForm></UserLoginAndRegisterForm>;
 };

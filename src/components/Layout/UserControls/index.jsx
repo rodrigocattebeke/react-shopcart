@@ -1,7 +1,8 @@
-import "./UserControls.css";
 import { ShopCartOffCanvas } from "../ShopCartOffCanvas";
 import { useContext } from "react";
 import { CartContext } from "../../../Context/CartContext";
+import { Link } from "react-router-dom";
+import styles from "./userControls.module.css";
 
 export const UserControls = ({ responsiveClass = "" }) => {
   const { cartState } = useContext(CartContext);
@@ -9,14 +10,16 @@ export const UserControls = ({ responsiveClass = "" }) => {
     <>
       {/* USer control icons */}
 
-      <div className={`user-controls-container ${responsiveClass}`}>
+      <div className={`${styles.userControlsContainer} ${responsiveClass}`}>
         <div>
-          <span className="material-symbols-outlined user-control user-control-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             shopping_cart
           </span>
-          <p className={`cart-counter ${cartState.cartProducts.length > 0 ? "active" : ""}`}>{cartState.cartProducts.length > 0 ? `${cartState.cartProducts.length}` : ""}</p>
+          <p className={`${styles.cartCounter} ${cartState.cartProducts.length > 0 ? "active" : ""}`}>{cartState.cartProducts.length > 0 ? `${cartState.cartProducts.length}` : ""}</p>
         </div>
-        <span className="material-symbols-outlined user-control user-control-person">person</span>
+        <Link to="/login" className={`material-symbols-outlined ${(styles.userControl, styles.userControlPerson)}`}>
+          person
+        </Link>
       </div>
 
       {/* User control shopcart (offcanvas) */}

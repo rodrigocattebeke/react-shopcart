@@ -1,15 +1,20 @@
 import { HomePage } from "./pages/HomePage";
 import { CartProvider } from "./Context/CartContext";
 import { ProductViewPage } from "./pages/ProductViewPage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Layout/Header";
 import { ViewCategoryProductsPage } from "./pages/ViewCategoryProductsPage";
 import { UserLoginPage } from "./pages/UserLoginPage";
 
 function App() {
+  const location = useLocation();
+
+  // LOCATIONS WITH HEADER HIDE
+  const hideHeaderLocations = ["/login"];
+
   return (
     <CartProvider>
-      <Header></Header>
+      {!hideHeaderLocations.includes(location.pathname) && <Header></Header>}
       <main>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
