@@ -15,7 +15,7 @@ export const UserControls = ({ responsiveClass = "" }) => {
           <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             shopping_cart
           </span>
-          <p className={`${styles.cartCounter} ${cartState.cartProducts.length > 0 ? "active" : ""}`}>{cartState.cartProducts.length > 0 ? `${cartState.cartProducts.length}` : ""}</p>
+          <p className={`${styles.cartCounter} ${cartState.cartProducts.length > 0 ? `${styles.active}` : ""}`}>{cartState.cartProducts.length > 0 ? `${cartState.cartProducts.length}` : ""}</p>
         </div>
         <Link to="/login" className={`material-symbols-outlined ${(styles.userControl, styles.userControlPerson)}`}>
           person

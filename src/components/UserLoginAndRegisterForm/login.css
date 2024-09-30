@@ -1,45 +1,38 @@
+
+.form-container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    height: 85%;
+    padding: 25px 0;
+    box-shadow: 0 0 5px rgb(163, 163, 163) ;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
 .loginBody{
-    width: 100vw;
-    height: 100vh;
-}
-
-.login-background{
-    background-color: var(--background-color-secondary);
-}
-
-.login-background , .register-background{
-    height:100% ;
-    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color-secondary);
 
-.register-background{
-    min-height: 500px;
-}
-
-.login-container{
-    margin: 0 20px;
-}
-
-.login-header{
-    display: flex ;
-    justify-content: space-evenly;
-    width: 100%;
-    max-width: 430px;
 }
 
 .link{
     display: flex;
     flex-direction: column;
+    position: relative;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--font-secondary-color);
     transition: .5s;
     cursor: pointer; 
 }
-
 
 .linkLeft{
     align-items: end;
@@ -50,6 +43,7 @@
 }
 
 .link::after{
+    display: inline-block;;
     content: "";
     width: 0;
     height: .12rem;
@@ -65,30 +59,47 @@
     align-items: start;
 }
 
-.linkRight.active{
-    align-items: start;
-}
-
 .link.active::after{
     width: 100%;
 }
 
-.form-container{
-    display: flex;
+.login-container{
+    position: relative;
     width: 100%;
-    max-width: 430px;
-    height: max-content;
-    padding: 25px 30px;
-    box-shadow: 0 0 5px rgb(163, 163, 163) ;
-    background-color: rgb(255, 255, 255);
-    align-items: center;
+    max-width: 450px;
+    height: 100%;
+    max-height: 350px;
+    margin: 0 20px;
 }
 
+.login-header{
+    display: flex ;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 430px;
+    height: 15%;
+}
 
-.login-form , .register-form{
+.login-input , .register-input{
     width: 100%;
     margin: 10px 0;
     height: 50px;
+}
+
+.loginForm , .registerForm{
+    width:  100%;
+    position: absolute;
+    transition: 1s;
+    padding: 0 25px;
+}
+
+.loginForm{
+    transform: translateX(-120%);
+
+}
+
+.loginForm.active , .registerForm.active{
+    transform: translateX(0);
 }
 
 .login-submit{
@@ -96,8 +107,21 @@
     font-size: 1rem;
 }
 
+.register-background{
+    min-height: 500px;
+}
+
+.registerForm{
+    transform: translateX(120%);
+}
+
+
+
+
 @media (max-width: 500px){
     .login-background , .register-background{
        max-height: 600px;
     }
 }
+
+
