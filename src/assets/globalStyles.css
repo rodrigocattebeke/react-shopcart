@@ -1,8 +1,8 @@
 :root{
     /* BACKGROUNDS COLORS */
     --background-color-primary: rgb(255, 255, 255);
-    --background-color-secondary: rgba(255, 255, 245, 0.789);
-    --background-color-tertiary: rgb(141, 141, 141);
+    --background-color-secondary: rgba(246, 246, 246, 0.789);
+    --background-color-tertiary: rgb(114, 114, 114);
 
 
     /* BUTTONS COLORS */
@@ -35,11 +35,28 @@ html{
     font-size: 16px;
 }
 
+body{
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+/* SIZING CLASS */
+
+.vwh-100{
+    width: 100vw;
+    height: 100vh;
+}
+
+.wh-100{
+    width: 100% ;
+    height: 100%;
+}
 
 /* BUTTONS */
 .button-color-primary{
     background-color:var(--button-background-color);
-    color: var(--button-font-color)
+    color: var(--button-font-color);
+    transition: .2s;
 }
 
 .button-color-primary:hover{

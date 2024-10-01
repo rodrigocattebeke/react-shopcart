@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { CartProducts } from "./CartProducts";
+import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import { CartContext } from "../../../Context/CartContext";
+import { Link } from "react-router-dom";
 
 const getTotalPrice = (products = {}) => {
   if (products.length == 0) return;
@@ -23,15 +24,15 @@ export const ShopCartOffCanvas = () => {
       </div>
       {console.log(cartState.cartProducts)}
       <div className="offcanvas-body shopcart-body">
-        <div className="shopcart-body-items h-75 overflow-y-auto overflow-x-hidden">{cartState.cartProducts.length < 1 ? "Carrito vacío" : cartState.cartProducts.map((product) => <CartProducts key={product.id} product={product} />)}</div>
+        <div className="shopcart-body-items h-75 overflow-y-auto overflow-x-hidden">{cartState.cartProducts.length < 1 ? "Carrito vacío" : cartState.cartProducts.map((product) => <ProductCartInfo key={product.id} product={product} />)}</div>
         <div className="shopcart-body-actions align-items-center  d-flex flex-column h-25 justify-content-between ">
           <div className="total-price d-flex justify-content-between w-100">
             <h5>Total:</h5>
             <h5>{getTotalPrice(cartState.cartProducts)}</h5>
           </div>
-          <button type="button" className="btn btn-success">
+          <Link to={"/c heckout"} type="button" className="btn btn-success">
             Finalizar pedido
-          </button>
+          </Link>
         </div>
       </div>
     </div>

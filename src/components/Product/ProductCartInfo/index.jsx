@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../../Context/CartContext";
-import styles from "./shopCart.module.css";
+import styles from "./styles.module.css";
 import { QuantitySelector } from "../../Common/QuantitySelector";
 import { Link } from "react-router-dom";
 
-export const CartProducts = ({ product = {} }) => {
+export const ProductCartInfo = ({ product = {}, isQuantityActive = true }) => {
   const { cartState, modifyProductQuantity, removeProductFromCart } = useContext(CartContext);
   const [productQuantity, setProductQuantity] = useState(product.quantity);
 
@@ -32,7 +32,8 @@ export const CartProducts = ({ product = {} }) => {
         <p className={`${styles.productPrice} small my-0`}>${product.price}</p>
         <div className="d-flex">
           <p className="my-0">Cantidad:</p>
-          <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector>
+          {isQuantityActive ? <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector> : <p>product.quantity</p>}
+
           <button className={`${styles.updateProductButton} ${product.quantity == productQuantity ? "" : styles.active}`} onClick={updateProductQuantity}>
             Actualizar
           </button>
