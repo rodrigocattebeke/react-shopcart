@@ -23,7 +23,7 @@
     --primary-color-hover: rgb(132, 132, 132);
 
     /* SECONDARY COLORS */
-    --secondary-color: rgb(132, 132, 132);
+    --secondary-color: rgb(171, 171, 171);
 
     /* LOADER COLORS */
     --loader-color-1: rgb(255, 150, 150);
@@ -31,20 +31,33 @@
     --loader-color-3: rgb(108, 105, 194);
 }
 
+/* RESET */
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+
+
+/*   */
 html{
     font-size: 16px;
 }
 
 body{
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
 /* SIZING CLASS */
 
 .vwh-100{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .wh-100{

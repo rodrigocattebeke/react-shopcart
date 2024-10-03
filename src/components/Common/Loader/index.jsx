@@ -1,6 +1,8 @@
 import "./loader.css";
 
 export const Loader = () => {
+  //ADD "column[i]" FOR EDITING THE LOADER COLUMN COLOR (MAX 3), AND GO TO THE GLOBAL STYLES FOR CHANGE COLORS
+
   return (
     <section className="loader-container">
       <svg className="loader" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

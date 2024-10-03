@@ -83,7 +83,17 @@ export const CartProvider = ({ children }) => {
     dispatch(action);
   };
 
-  return <CartContext.Provider value={{ cartState, addProductToCart, modifyProductQuantity, removeProductFromCart }}>{children}</CartContext.Provider>;
+  const getTotalPrice = () => {
+    const products = cartState.cartProducts;
+    if (products.length == 0) return 0;
+    let totalPrice = 0;
+    for (let i = 0; i < products.length; i++) {
+      totalPrice += products[i].totalPrice;
+    }
+    return totalPrice.toFixed(2);
+  };
+
+  return <CartContext.Provider value={{ cartState, addProductToCart, modifyProductQuantity, removeProductFromCart, getTotalPrice }}>{children}</CartContext.Provider>;
 };
 
 export { CartContext };

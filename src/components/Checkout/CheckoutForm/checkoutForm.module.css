@@ -1,12 +1,3 @@
-.checkoutBackground{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color-secondary);
-}
-
 .checkoutForm{
     display: flex;
     flex-direction: column;
@@ -19,7 +10,7 @@
     font-size: 1rem;
     border-radius: .2rem;
     padding: 0 1rem;
-    border: .5px solid ;
+    border: .5px solid var(--secondary-color);
 }
 
 .checkoutForm > button{
@@ -35,24 +26,14 @@
     width: 100%;
     max-width: 500px;
     height: 100%;
-    max-height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
     border-radius: .2rem;
-    box-shadow: 0 0 10px -5px var(--background-color-tertiary);
     gap: 1rem;
+    box-shadow: 0 0 10px -5px var(--background-color-tertiary);
     background-color: var(--background-color-primary);
 }
 
-.container{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    height: 100%;
-    max-height: 600px;
-}
+
 
 .formTitle{
     display: flex;
