@@ -1,9 +1,8 @@
-.list-container{
+.listContainer{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     justify-items: center;
     gap: 20px;
-    width: 80%;
     min-height: 100%;
     margin: 30px auto;
 }

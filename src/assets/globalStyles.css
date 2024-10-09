@@ -1,7 +1,8 @@
 :root{
     /* BACKGROUNDS COLORS */
     --background-color-primary: rgb(255, 255, 255);
-    --background-color-secondary: rgba(246, 246, 246, 0.789);
+    --background-color-secondary: rgb(217, 217, 217);
+    --background-color-secondary-transparent:  rgba(217, 217, 217, 0.445);
     --background-color-tertiary: rgb(114, 114, 114);
 
 
@@ -38,8 +39,6 @@
     box-sizing: border-box;
 }
 
-
-
 /*   */
 html{
     font-size: 16px;
@@ -50,19 +49,6 @@ body{
     min-height: 100vh;
     padding: 0;
     margin: 0;
-}
-
-/* SIZING CLASS */
-
-.vwh-100{
-    width: 100%;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
-
-.wh-100{
-    width: 100% ;
-    height: 100%;
 }
 
 /* BUTTONS */

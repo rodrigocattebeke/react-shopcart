@@ -6,17 +6,18 @@ import { Header } from "./components/Layout/Header";
 import { ViewCategoryProductsPage } from "./pages/ViewCategoryProductsPage";
 import { UserLoginPage } from "./pages/UserLoginPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
+import { Footer } from "./components/Layout/Footer";
 
 function App() {
   const location = useLocation();
 
   // LOCATIONS WITH HEADER HIDE
-  const hideHeaderLocations = ["/login", "/checkout"];
+  const hideComponentLocations = ["/login", "/checkout"];
 
   return (
     <CartProvider>
-      {!hideHeaderLocations.includes(location.pathname) && <Header />}
-      <main className="wh-100">
+      {!hideComponentLocations.includes(location.pathname) && <Header />}
+      <main className="container-fluid p-0">
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/category/*" element={<ViewCategoryProductsPage />}></Route>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
       </main>
+      {/* <Footer /> */}
     </CartProvider>
   );
 }
