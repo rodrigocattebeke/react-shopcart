@@ -1,0 +1,59 @@
+import { PropTypes } from "prop-types";
+import styles from "./styles.module.css";
+import { useEffect, useState } from "react";
+import { timestampToDate } from "../../../hooks/timeStampToDate";
+
+/**
+ * @param {{
+ * limitTime: { hour: [number, number, number], //[hours, minutes, seconds]
+ * day: number,
+ * month: number,
+ * year: number } }} props
+ */
+
+export const CountdownTimer = ({ limitTime = { hour: [0, 0, 0], day: null, month: null, year: null } }) => {
+  //Destructuring limit time
+  let { hour, day, month, year } = limitTime;
+
+  //limit time validations
+  if (year == null) year = new Date().getFullYear();
+  month == null ? (month = new Date().getMonth()) : (month -= 1);
+  if (day == null) day = new Date().getDay() + 1;
+
+  //Create a new date for the time left
+  const timestampLimit = new Date(year, month, day, hour[0], hour[1], hour[2]).getTime();
+
+  //Create a useState for time left
+  const [timestampLeft, setTimestampLeft] = useState(0);
+  const [timeLimit, setTimeLimit] = useState(null);
+
+  // Create useEffect to calculate time left
+  useEffect(() => {
+    const timeleftInterval = setInterval(() => {
+      const timestampNow = new Date().getTime();
+      const timestampDifference = timestampLimit - timestampNow; //Calculate the difference between timeLimit and time now
+      setTimestampLeft(timestampDifference); //set the timestamp differente
+      setTimeLimit(timestampToDate(timestampDifference));
+    }, 1000);
+    return () => clearInterval(timeleftInterval);
+  }, [timestampLimit]);
+
+  return !timeLimit ? (
+    ""
+  ) : (
+    <div className={styles.countdownContainer}>
+      <p>
+        {timeLimit.days}:{timeLimit.hours}:{timeLimit.minutes}:{timeLimit.seconds}
+      </p>
+    </div>
+  );
+};
+
+CountdownTimer.propTypes = {
+  limitTime: PropTypes.shape({
+    hour: PropTypes.arrayOf(PropTypes.number),
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+  }),
+};

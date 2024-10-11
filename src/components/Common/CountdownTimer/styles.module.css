@@ -1,0 +1,10 @@
+.countdownContainer{
+    width: min-content;
+    height: min-content;
+}
+
+.countdownContainer > p{
+    width: min-content;
+    font-size: 2rem;
+    color: var(--font-primary-color);
+}

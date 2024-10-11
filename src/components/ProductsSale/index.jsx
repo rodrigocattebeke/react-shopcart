@@ -3,6 +3,7 @@ import simpleFetch from "../../hooks/SimpleFetch";
 import { apiUrls } from "../../config/apiUrls";
 import styles from "./styles.module.css";
 import { SaleProductCard } from "../Product/SaleProductCard";
+import { CountdownTimer } from "../Common/CountdownTimer";
 
 const d = document;
 
@@ -107,14 +108,21 @@ export const ProductsSale = () => {
     <section className="container d-flex align-items-center justify-content-center my-5 pb-4 border-bottom">
       <div className={`${styles.saleProductsContainer} row`}>
         <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
-          <p>¡Oferta por tiempo limitado!</p>
+          <div className="container-fluid row">
+            <div className="col-12 d-flex align-items-center justify-content-center">
+              <p>¡Oferta por tiempo limitado!</p>
+            </div>
+            <div className="col-12 d-flex align-items-center justify-content-center">
+              <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 15, month: 10, year: 2024 }} />
+            </div>
+          </div>
         </div>
         <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
           {/* carousel elements */}
           <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`} ref={carouselProductsContainerRef}>
             <div className={`${styles.saleProductsCarousel}`}>
               {saleProducts.map((product, i) => (
-                <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer}`} key={`${product.id}`}>
+                <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
                   <SaleProductCard product={product} />
                 </div>
               ))}
@@ -143,7 +151,6 @@ export const ProductsSale = () => {
                   {controlChecked == i ? "radio_button_checked" : "radio_button_unchecked"}
                 </span>
               ))}
-            {console.log(totalCarouselSections)}
           </div>
         </div>
       </div>

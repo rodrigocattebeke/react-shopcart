@@ -27,7 +27,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </CartProvider>
   );
 }

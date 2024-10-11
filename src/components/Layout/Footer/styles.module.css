@@ -1,3 +1,12 @@
-.whatsappIcon{
+.icon{
     width: 40px;
+}
+
+.iconContainer{
+    width: 100%;
+}
+
+.iconContainer > p{
+    width: 80px;
+    font-size: 1rem;
 }
