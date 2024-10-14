@@ -45,13 +45,15 @@ export const ViewProduct = () => {
     <Loader />
   ) : (
     <section className="container">
-      <div className={`${styles.productSection1} mt-3`}>
-        <div className={`${styles.productImg}`}>
+      <div className={`${styles.titleContainer}`}>
+        <h2>{product?.title}</h2>
+      </div>
+      <div className={`${styles.productSection1} row pt-4 border-top border-1`}>
+        <div className={`${styles.productImgContainer} col-12 col-sm-6 mb-4`}>
           <img src={product?.image}></img>
         </div>
-        <div className={`${styles.productInfoContainer}`}>
+        <div className={`${styles.productInfoContainer} col-12 col-sm-6 mb-4`}>
           <div className={`${styles.productInfo}`}>
-            <h2>{product?.title}</h2>
             <small>
               Categoría:{" "}
               <Link to={`/category/${product?.category}`} className="product-link">

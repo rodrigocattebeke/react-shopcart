@@ -1,12 +1,15 @@
+import { useState } from "react";
 import { HomeCatalogue } from "../components/HomeCatalogue";
-import { Header } from "../components/Layout/Header";
 import { ProductsSale } from "../components/ProductsSale";
+import { Loader } from "../components/Common/Loader";
 
 export const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
-      {/* <Header></Header> */}
-      <ProductsSale />
+      {isLoading && <Loader />}
+      <ProductsSale setIsLoading={setIsLoading} />
       <HomeCatalogue />
     </>
   );

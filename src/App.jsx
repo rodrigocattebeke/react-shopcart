@@ -12,12 +12,13 @@ function App() {
   const location = useLocation();
 
   // LOCATIONS WITH HEADER HIDE
-  const hideComponentLocations = ["/login", "/checkout"];
+  const hideHeaderLocations = ["/login", "/checkout"];
+  const hideFooterLocations = ["/login"];
 
   return (
     <CartProvider>
-      {!hideComponentLocations.includes(location.pathname) && <Header />}
-      <main className="container-fluid p-0">
+      {!hideHeaderLocations.includes(location.pathname) && <Header />}
+      <main className="container-fluid p-0" style={{ minHeight: 100 + "vh" }}>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/category/*" element={<ViewCategoryProductsPage />}></Route>
@@ -27,7 +28,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
       </main>
-      <Footer />
+      {!hideFooterLocations.includes(location.pathname) && <Footer />}
     </CartProvider>
   );
 }

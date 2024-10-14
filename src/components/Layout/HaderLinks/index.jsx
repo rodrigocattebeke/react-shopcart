@@ -26,12 +26,12 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse order-3" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown ">
+          <ul className="navbar-nav position-relative">
+            <li className="nav-item dropdown position-relative">
               <div className={`nav-link dropdown-toggle ${styles.categoriesDropdown}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorías
               </div>
-              <ul className={`dropdown-menu ${styles.dropdownMenu}`}>
+              <ul className={`${styles.dropdownMenu} dropdown-menu position-absolute`}>
                 {categories.length < 1
                   ? ""
                   : categories.map((category, index) => (

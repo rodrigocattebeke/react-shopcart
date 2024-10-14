@@ -7,7 +7,7 @@ import { CountdownTimer } from "../Common/CountdownTimer";
 
 const d = document;
 
-export const ProductsSale = () => {
+export const ProductsSale = ({ setIsLoading }) => {
   const [carouselProductsContainerSize, setCarouselProductsContainerSize] = useState(0);
   const [controlChecked, setControlChecked] = useState(0);
   const [saleProducts, setSaleProducts] = useState(undefined);
@@ -17,7 +17,7 @@ export const ProductsSale = () => {
   const carouselProductsContainerRef = useRef(null);
   const firstCardRef = useRef(null);
 
-  // get sale products
+  // get sale products and set isLoading false
   useEffect(() => {
     const getSaleProducts = async () => {
       // totalProducts = total products in sale section
@@ -27,9 +27,10 @@ export const ProductsSale = () => {
       let res = await simpleFetch(apiUrls.saleProducts);
       res = res.data.slice(0, totalProducts);
       setSaleProducts(res);
+      setIsLoading(false);
     };
     getSaleProducts();
-  }, []);
+  }, [setIsLoading]);
 
   // observe and set carousel total width
   useEffect(() => {
@@ -105,55 +106,57 @@ export const ProductsSale = () => {
   return saleProducts == undefined ? (
     ""
   ) : (
-    <section className="container d-flex align-items-center justify-content-center my-5 pb-4 border-bottom">
-      <div className={`${styles.saleProductsContainer} row`}>
-        <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
-          <div className="container-fluid row">
-            <div className="col-12 d-flex align-items-center justify-content-center">
-              <p>¡Oferta por tiempo limitado!</p>
+    <>
+      <section className="container d-flex align-items-center justify-content-center my-5 pb-4 border-bottom">
+        <div className={`${styles.saleProductsContainer} row`}>
+          <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
+            <div className="container-fluid row">
+              <div className="col-12 d-flex align-items-center justify-content-center">
+                <p>¡Oferta por tiempo limitado!</p>
+              </div>
+              <div className="col-12 d-flex align-items-center justify-content-center">
+                <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 15, month: 10, year: 2024 }} />
+              </div>
             </div>
-            <div className="col-12 d-flex align-items-center justify-content-center">
-              <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 15, month: 10, year: 2024 }} />
+          </div>
+          <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
+            {/* carousel elements */}
+            <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`} ref={carouselProductsContainerRef}>
+              <div className={`${styles.saleProductsCarousel}`}>
+                {saleProducts.map((product, i) => (
+                  <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
+                    <SaleProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* carousel arrow controls */}
+            <div
+              className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerLeft}`}
+              onClick={() => {
+                handleCarouselArrows("back");
+              }}
+            >
+              <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_back_ios</span>
+            </div>
+            <div className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerRight}`} onClick={() => handleCarouselArrows("foward")}>
+              <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_forward_ios</span>
+            </div>
+
+            {/* carousel controls */}
+            <div className={`${styles.carouselControl}`}>
+              {Array(totalCarouselSections)
+                .fill(0)
+                .map((e, i) => (
+                  <span key={`${i}`} className="material-symbols-outlined" onClick={() => handleCarouselControl(i)}>
+                    {controlChecked == i ? "radio_button_checked" : "radio_button_unchecked"}
+                  </span>
+                ))}
             </div>
           </div>
         </div>
-        <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
-          {/* carousel elements */}
-          <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`} ref={carouselProductsContainerRef}>
-            <div className={`${styles.saleProductsCarousel}`}>
-              {saleProducts.map((product, i) => (
-                <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
-                  <SaleProductCard product={product} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* carousel arrow controls */}
-          <div
-            className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerLeft}`}
-            onClick={() => {
-              handleCarouselArrows("back");
-            }}
-          >
-            <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_back_ios</span>
-          </div>
-          <div className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerRight}`} onClick={() => handleCarouselArrows("foward")}>
-            <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_forward_ios</span>
-          </div>
-
-          {/* carousel controls */}
-          <div className={`${styles.carouselControl}`}>
-            {Array(totalCarouselSections)
-              .fill(0)
-              .map((e, i) => (
-                <span key={`${i}`} className="material-symbols-outlined" onClick={() => handleCarouselControl(i)}>
-                  {controlChecked == i ? "radio_button_checked" : "radio_button_unchecked"}
-                </span>
-              ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

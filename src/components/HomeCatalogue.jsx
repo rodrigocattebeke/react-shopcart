@@ -19,5 +19,5 @@ export const HomeCatalogue = () => {
     loadCatalogue();
   }, []);
 
-  return catalogue.length == 0 ? <Loader></Loader> : !isSuccess ? <ErrorScreen></ErrorScreen> : <ProductList catalogue={catalogue}></ProductList>;
+  return catalogue.length == 0 ? "" : !isSuccess ? <ErrorScreen></ErrorScreen> : <ProductList catalogue={catalogue}></ProductList>;
 };

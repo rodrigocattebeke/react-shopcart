@@ -20,14 +20,13 @@
     font-size:1rem ;
 }
 
-.productImg{
+.productImgContainer{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
 }
 
-.productImg > img{
+.productImgContainer > img{
     width: 100%;
     max-width: 15rem;
 }
@@ -36,24 +35,21 @@
     height: 80%;
 }
 
-.productInfo > h2{
-    margin-bottom: 0;
-    font-size: 1.5rem;
-}
-
 .productInfo > p{
     margin-top:.3rem ;
     font-size: 1.2rem;
-}
-
-.productInfoContainer{
-    width: 50%;
 }
 
 .productSection1{
     display: flex;
     width: 100%;;
 }
+
 .productSection2 > p{
     font-size: 1.2rem;
+}
+
+.titleContainer > h2{
+    margin-bottom: 0;
+    font-size: 1.5rem;
 }

@@ -13,7 +13,7 @@ const removeBodyStyles = () => {
 export const ShopCartOffCanvas = () => {
   const { cartState, getTotalPrice } = useContext(CartContext);
   return (
-    <div className="offcanvas offcanvas-end shopcart-menu" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div className={`${styles.offCanvas} offcanvas offcanvas-end shopcart-menu`} tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div className="offcanvas-header shopcart-header">
         <h5 className="offcanvas-title" id="offcanvasRightLabel">
           Carrito

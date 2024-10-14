@@ -8,29 +8,29 @@ export const Footer = () => {
     <footer className="container-fluid border-top border-1 py-4">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-12 col-sm-6 my-3">
             <p>React Shopcart</p>
             <p>Todos los derechos reservados</p>
           </div>
-          <div className="col-12 col-sm-6">
+          <div className="col-12 col-sm-6 my-3">
             <div>
               <p>Contáctanos:</p>
             </div>
             <ul>
               <li>
-                <div className={`${styles.iconContainer} d-flex gap-2`}>
+                <div className={`${styles.iconContainer}`}>
                   <p>Whatsapp</p>
                   <img src={whatsappIcon} className={styles.icon}></img>
                 </div>
               </li>
               <li>
-                <div className={`${styles.iconContainer} d-flex gap-2`}>
+                <div className={`${styles.iconContainer}`}>
                   <p>Instagram</p>
                   <img src={instagramIcon} className={styles.icon}></img>
                 </div>
               </li>
               <li>
-                <div className={`${styles.iconContainer} d-flex gap-2`}>
+                <div className={`${styles.iconContainer}`}>
                   <p>Facebook</p>
                   <img src={facebookIcon} className={styles.icon}></img>
                 </div>
