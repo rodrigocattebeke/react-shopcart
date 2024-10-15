@@ -7,6 +7,7 @@ import { ViewCategoryProductsPage } from "./pages/ViewCategoryProductsPage";
 import { UserLoginPage } from "./pages/UserLoginPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./components/Layout/Footer";
+import { ScrollToTop } from "./hooks/ScrollToTop";
 
 function App() {
   const location = useLocation();
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <CartProvider>
+      <ScrollToTop />
       {!hideHeaderLocations.includes(location.pathname) && <Header />}
       <main className="container-fluid p-0" style={{ minHeight: 100 + "vh" }}>
         <Routes>
