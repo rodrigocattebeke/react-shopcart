@@ -109,6 +109,7 @@ export const ProductsSale = ({ setIsLoading }) => {
     <>
       <section className="container d-flex align-items-center justify-content-center my-5 pb-4 border-bottom">
         <div className={`${styles.saleProductsContainer} row`}>
+          {/* Products sale container */}
           <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
             <div className="container-fluid row">
               <div className="col-12 d-flex align-items-center justify-content-center">
@@ -119,6 +120,9 @@ export const ProductsSale = ({ setIsLoading }) => {
               </div>
             </div>
           </div>
+
+          {/* Carousel container */}
+
           <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
             {/* carousel elements */}
             <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`} ref={carouselProductsContainerRef}>
@@ -133,7 +137,7 @@ export const ProductsSale = ({ setIsLoading }) => {
 
             {/* carousel arrow controls */}
             <div
-              className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerLeft}`}
+              className={`${styles.controlArrowContainer}`}
               onClick={() => {
                 handleCarouselArrows("back");
               }}

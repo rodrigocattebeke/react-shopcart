@@ -45,7 +45,7 @@ export const ViewProduct = () => {
     <Loader />
   ) : (
     <section className="container">
-      <div className={`${styles.titleContainer}`}>
+      <div className={`${styles.titleContainer} my-3`}>
         <h2>{product?.title}</h2>
       </div>
       <div className={`${styles.productSection1} row pt-4 border-top border-1`}>

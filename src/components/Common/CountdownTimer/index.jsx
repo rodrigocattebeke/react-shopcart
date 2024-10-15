@@ -28,20 +28,13 @@ export const CountdownTimer = ({ limitTime = { hour: [0, 0, 0], day: null, month
 
   // Create useEffect to calculate time left
   useEffect(() => {
-    let timeleftInterval;
-    if (timeLimit) {
-      timeleftInterval = setInterval(() => {
-        const timestampNow = new Date().getTime();
-        const timestampDifference = timestampLimit - timestampNow; //Calculate the difference between timeLimit and time now
-        setTimeLimit(timestampToDate(timestampDifference));
-      }, 1000);
-    } else {
+    let timeleftInterval = setInterval(() => {
       const timestampNow = new Date().getTime();
       const timestampDifference = timestampLimit - timestampNow; //Calculate the difference between timeLimit and time now
       setTimeLimit(timestampToDate(timestampDifference));
-    }
+    }, 1000);
     return () => clearInterval(timeleftInterval);
-  }, [timestampLimit, timeLimit]);
+  }, [timestampLimit]);
 
   return !timeLimit ? (
     ""

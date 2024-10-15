@@ -8,15 +8,18 @@ export const timestampToDate = (timestamp = null) => {
     return null;
   }
 
-  let days = timestamp / (1000 * 60 * 60 * 24);
-  let hours = (days % parseInt(days)) * 60;
-  let minutes = (hours % parseInt(hours)) * 60;
-  let seconds = (minutes % parseInt(minutes)) * 60;
+  let days = Math.floor(timestamp / (1000 * 60 * 60 * 24)),
+    remainingDays = timestamp % (1000 * 60 * 60 * 24),
+    hours = Math.floor(remainingDays / (1000 * 60 * 60)),
+    remainingHours = remainingDays % (1000 * 60 * 60),
+    minutes = Math.floor(remainingHours / (1000 * 60)),
+    remainingMinutes = remainingHours % (1000 * 60),
+    seconds = Math.floor(remainingMinutes / 1000);
 
   return {
-    days: Math.floor(days),
-    hours: Math.floor(hours),
-    minutes: Math.floor(minutes),
-    seconds: Math.floor(seconds),
+    days,
+    hours,
+    minutes,
+    seconds,
   };
 };

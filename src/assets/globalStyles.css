@@ -76,6 +76,10 @@ body{
 
 
 /* ICONS */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+}
+
 .shopIcon{
     color: var(--primary-color);
     cursor:pointer;
