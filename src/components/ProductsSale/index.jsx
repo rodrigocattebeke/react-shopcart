@@ -14,8 +14,9 @@ export const ProductsSale = ({ setIsLoading }) => {
   const [stepsTaken, setStepsTaken] = useState(0);
   const [totalCards, setTotalCards] = useState(0);
   const [totalCarouselSections, setTotalCarouselSections] = useState(0);
-  const carouselProductsContainerRef = useRef(null);
+  const carouselContainerRef = useRef(null);
   const firstCardRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   // get sale products and set isLoading false
   useEffect(() => {
@@ -35,8 +36,8 @@ export const ProductsSale = ({ setIsLoading }) => {
   // observe and set carousel total width
   useEffect(() => {
     //set carousel width and total sections of carousel
-    if (!carouselProductsContainerRef.current) return;
-    const carouselCopy = carouselProductsContainerRef.current;
+    if (!carouselContainerRef.current) return;
+    const carouselCopy = carouselContainerRef.current;
 
     // create a carousel container resize observer
     const resizeObserver = new ResizeObserver((entries) => {
@@ -47,61 +48,108 @@ export const ProductsSale = ({ setIsLoading }) => {
 
     // observe carousel container
 
-    if (carouselProductsContainerRef.current) resizeObserver.observe(carouselProductsContainerRef.current);
+    if (carouselContainerRef.current) resizeObserver.observe(carouselContainerRef.current);
     return () => resizeObserver.unobserve(carouselCopy);
   }, [saleProducts]);
 
   //carousel resized verify and carousel total sections setter
   useEffect(() => {
-    if (!firstCardRef.current) return;
+    if (!carouselContainerRef.current) return;
     const numbOfCardsViewed = Math.round(carouselProductsContainerSize / firstCardRef.current.clientWidth);
-    setTotalCarouselSections(Math.round(totalCards / numbOfCardsViewed)); //Total cards / steps results are the number of groups viewed in the carousel.
-
-    const carousel = d.querySelector(`.${styles.saleProductsCarousel}`);
-    carousel.style.transform = `translateX(0%)`;
+    setTotalCarouselSections(Math.round(totalCards / numbOfCardsViewed)); //Total cards|steps results are the number of groups viewed in the carousel.
     setStepsTaken(0);
-    // if the carousel go to the section 0, the control checked is 0
-    setControlChecked(0);
   }, [carouselProductsContainerSize, totalCards]);
 
   // carousel arrows handle
   const handleCarouselArrows = (action) => {
-    if (!carouselProductsContainerRef.current) return;
-    // select the carousel
-    const carousel = d.querySelector(`.${styles.saleProductsCarousel}`);
+    if (!carouselContainerRef.current) return;
 
     if (action == "back") {
       let newStepsTaken = stepsTaken - 1;
       if (newStepsTaken < 0) newStepsTaken = totalCarouselSections - 1; // 1 is substracted of totalCarouselSections because the group one is already viewed
 
-      carousel.style.transform = `translateX(-${newStepsTaken * 100}%)`;
       setStepsTaken(newStepsTaken);
-      setControlChecked(newStepsTaken);
-
       return;
     }
     if (action == "foward") {
       let newStepsTaken = stepsTaken + 1;
       if (newStepsTaken > totalCarouselSections - 1) newStepsTaken = 0; // 1 is substracted of totalCarouselSections because the group one is already viewed
 
-      carousel.style.transform = `translateX(-${newStepsTaken * 100}%)`;
       setStepsTaken(newStepsTaken);
-      setControlChecked(newStepsTaken);
-
       return;
     }
   };
 
   //carousel control handle
   const handleCarouselControl = (section) => {
-    if (!carouselProductsContainerRef.current) return;
+    if (!carouselContainerRef.current) return;
     // select the carousel
-    const carousel = d.querySelector(`.${styles.saleProductsCarousel}`);
-    carousel.style.transform = `translateX(-${section * 100}%)`;
     setStepsTaken(section);
-    //set the carousel control checked
-    setControlChecked(section);
   };
+
+  const handleTouchEnd = () => {
+    //select the carousel container
+    const container = carouselContainerRef.current;
+    const containerWidth = container.clientWidth;
+    const scrollLeft = container.scrollLeft;
+    //Get the actual number of slider viewed
+    let newStepsTaken = scrollLeft / containerWidth;
+
+    //add or substract 0.2 to stepstaken for rounded the step instead of waiting to reach 0.5
+    if (newStepsTaken > stepsTaken + 0.2) {
+      newStepsTaken = stepsTaken + 1;
+    } else if (newStepsTaken < stepsTaken - 0.2) {
+      if (stepsTaken == 0) return;
+      newStepsTaken = stepsTaken - 1;
+    }
+
+    console.log(newStepsTaken, scrollLeft);
+    setStepsTaken(newStepsTaken);
+    return;
+  };
+
+  // Handle the carousel touch scroll
+  const handleScroll = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    timeoutRef.current = setTimeout(() => {
+      const container = carouselContainerRef.current;
+      const containerWidth = container.clientWidth;
+      const scrollLeft = container.scrollLeft;
+      //Get the actual number of slider viewed
+      const newStepsTaken = Math.round(scrollLeft / containerWidth);
+
+      //scroll again for evite errors
+      container.scrollTo({
+        left: stepsTaken * containerWidth,
+        behavior: "smooth",
+      });
+      setStepsTaken(newStepsTaken);
+    }, 80);
+
+    return;
+  };
+
+  //Detect changes in stepsTaken and move the scroll of carousel container
+  useEffect(() => {
+    if (!carouselContainerRef.current) return;
+    const container = carouselContainerRef.current;
+    const containerWidth = container.clientWidth;
+    container.scrollTo({
+      left: stepsTaken * containerWidth,
+      behavior: "smooth",
+    });
+    setControlChecked(stepsTaken);
+  }, [stepsTaken]);
+
+  //Remove Refs if the component are desarmed
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return saleProducts == undefined ? (
     ""
@@ -116,7 +164,7 @@ export const ProductsSale = ({ setIsLoading }) => {
                 <p>¡Oferta por tiempo limitado!</p>
               </div>
               <div className="col-12 d-flex align-items-center justify-content-center">
-                <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 15, month: 10, year: 2024 }} />
+                <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 20, month: 10, year: 2024 }} />
               </div>
             </div>
           </div>
@@ -125,13 +173,15 @@ export const ProductsSale = ({ setIsLoading }) => {
 
           <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
             {/* carousel elements */}
-            <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`} ref={carouselProductsContainerRef}>
-              <div className={`${styles.saleProductsCarousel}`}>
-                {saleProducts.map((product, i) => (
-                  <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
-                    <SaleProductCard product={product} />
-                  </div>
-                ))}
+            <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`}>
+              <div className={`${styles.carouselScrollContaniner}`} ref={carouselContainerRef} onScroll={handleScroll}>
+                <div className={`${styles.saleProductsCarousel}`} onTouchEnd={handleTouchEnd}>
+                  {saleProducts.map((product, i) => (
+                    <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
+                      <SaleProductCard product={product} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

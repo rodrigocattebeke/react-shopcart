@@ -4,8 +4,8 @@ export const timestampToDate = (timestamp = null) => {
     return null;
   }
   if (timestamp < 0) {
-    console.warn("El timestamp no puede ser menor a 0");
-    return null;
+    console.warn("El timestamp es menor a 0");
+    return 0;
   }
 
   let days = Math.floor(timestamp / (1000 * 60 * 60 * 24)),
