@@ -20,7 +20,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
     <section className={`navbar navbar-expand-md header-links-container ${responsiveClass}`}>
       <div className="container-fluid">
         <Link className="navbar-brand order-2 order-md-1" to="/">
-          React Shopcart
+          L&R Express
         </Link>
         <button className="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

@@ -160,7 +160,7 @@ export const ProductsSale = ({ setIsLoading }) => {
           {/* Products sale container */}
           <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
             <div className="container-fluid row">
-              <div className="col-12 d-flex align-items-center justify-content-center">
+              <div className="col-12 d-none d-sm-flex align-items-center justify-content-center">
                 <p>¡Oferta por tiempo limitado!</p>
               </div>
               <div className="col-12 d-flex align-items-center justify-content-center">

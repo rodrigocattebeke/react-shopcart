@@ -9,7 +9,7 @@ export const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-sm-6 my-3">
-            <p>React Shopcart</p>
+            <p>L&R Express</p>
             <p>Todos los derechos reservados</p>
           </div>
           <div className="col-12 col-sm-6 my-3">
@@ -19,20 +19,24 @@ export const Footer = () => {
             <ul>
               <li>
                 <div className={`${styles.iconContainer}`}>
-                  <p>Whatsapp</p>
-                  <img src={whatsappIcon} className={styles.icon}></img>
+                  <a href="https://wa.me/+595984056668?txt=Hola%20vengo%20desde%20la%20web" target="_blank" rel="noopener">
+                    <p>Whatsapp</p>
+                    <img src={whatsappIcon} className={styles.icon}></img>
+                  </a>
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div className={`${styles.iconContainer}`}>
                   <p>Instagram</p>
                   <img src={instagramIcon} className={styles.icon}></img>
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className={`${styles.iconContainer}`}>
-                  <p>Facebook</p>
-                  <img src={facebookIcon} className={styles.icon}></img>
+                  <a href="https://www.facebook.com/people/LyR-Express/100089478412612/" target="_blank" rel="noopener">
+                    <p>Facebook</p>
+                    <img src={facebookIcon} className={styles.icon}></img>
+                  </a>
                 </div>
               </li>
             </ul>

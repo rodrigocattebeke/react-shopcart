@@ -21,9 +21,9 @@ export const ProductCartInfo = ({ product = {}, isModifyActive = true }) => {
   if (cartState.cartProducts.length > 1) borderBottom = true;
 
   return (
-    <div className={`row py-3 ${borderBottom ? "border-top" : " "}`} key={product.id}>
+    <div className={`${styles.productContainer} row my-3 ${borderBottom ? "border-top" : ""}`} key={product.id}>
       <div className={`${isModifyActive ? "col-2" : "col-4"}`}>
-        <img src={product.image} alt={product.title} className="img-fluid"></img>
+        <img src={product.image} alt={product.title} className={`${styles.productImg}`}></img>
       </div>
       <div className="col-8">
         <Link to={`/products/${product.id}`} className="product-link">
