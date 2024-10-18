@@ -21,7 +21,7 @@ export const ProductCartInfo = ({ product = {}, isModifyActive = true }) => {
   if (cartState.cartProducts.length > 1) borderBottom = true;
 
   return (
-    <div className={`${styles.productContainer} row my-3 ${borderBottom ? "border-top" : ""}`} key={product.id}>
+    <div className={`${styles.productContainer} row py-3 ${borderBottom ? "border-top" : ""}`} key={product.id}>
       <div className={`${isModifyActive ? "col-2" : "col-4"}`}>
         <img src={product.image} alt={product.title} className={`${styles.productImg}`}></img>
       </div>
@@ -32,7 +32,7 @@ export const ProductCartInfo = ({ product = {}, isModifyActive = true }) => {
         <p className={`${styles.productPrice} small my-0`}>${product.price}</p>
         <div className="d-flex gap-1">
           <p className="my-0">Cantidad:</p>
-          {isModifyActive ? <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector> : <p>{` ${product.quantity}`}</p>}
+          {isModifyActive ? <QuantitySelector initialQuantity={product.quantity} onQuantityChange={handleQuantity}></QuantitySelector> : <p className="m-0">{` ${product.quantity}`}</p>}
           <button className={`${styles.updateProductButton} ${product.quantity == productQuantity ? "" : styles.active}`} onClick={updateProductQuantity}>
             Actualizar
           </button>

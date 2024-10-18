@@ -1,14 +1,3 @@
-.userControlsContainer{
-    display: flex;
-    padding-top: .5rem ;
-    align-items: center;
-    justify-content: right;
-}
-
-.userControlsContainer > div {
-    display: flex;
-    position: relative;
-}
 
 .cartCounter{
     display: flex;
@@ -32,17 +21,6 @@
     visibility: visible;
 }
 
-.userControlPerson, .userControlCart{
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    transition: .2s;
-    text-decoration: none;
-}
-
-.userControlPerson:hover, .userControlCart:hover{
-    cursor: pointer;
-    color: var(--primary-color-hover)
-}
 
 
 .shopcartBodyItems{
@@ -51,4 +29,28 @@
 
 .shopcartBodyActions{
     height: 20%;
+}
+
+.userControlsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.userControlsContainer > div {
+    display: flex;
+    position: relative;
+}
+
+.userControlPerson, .userControlCart{
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: .2s;
+    text-decoration: none;
+}
+    
+.userControlPerson:hover, .userControlCart:hover{
+    cursor: pointer;
+    color: var(--primary-color-hover)
 }

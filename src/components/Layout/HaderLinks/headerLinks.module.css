@@ -3,9 +3,13 @@
     padding: .5rem 0 !important;
 }
 
+.navbarImg{
+    max-height: 70px;
+}
+
 @media screen and (min-width: 770px) {
     .dropdownMenu{
-        width: 300px;
+        min-width: 300px;
     }
     
 }

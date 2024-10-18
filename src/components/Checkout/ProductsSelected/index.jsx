@@ -8,7 +8,7 @@ export const ProductsSelected = ({}) => {
 
   return (
     <aside className={`${styles.productsResume}`}>
-      <p>Resumen</p>
+      <p className="">Resumen</p>
       <div className={`${styles.productsContainer}`}>{cartState.cartProducts < 1 ? "Sin items" : cartState.cartProducts.map((product) => <ProductCartInfo product={product} isModifyActive={false} key={product.id}></ProductCartInfo>)}</div>
     </aside>
   );
