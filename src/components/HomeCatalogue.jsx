@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
-import simpleFetch from "../hooks/SimpleFetch";
+import { useContext } from "react";
 import { ProductList } from "./Product/ProductList";
 import { Loader } from "./Common/Loader";
 import { ErrorScreen } from "./Common/ErrorScreen";
-import { apiUrls } from "../config/apiUrls";
+import { ProductsContext } from "../context/ProductsContext";
 
 export const HomeCatalogue = () => {
-  const [catalogue, setCatalogue] = useState([]);
-  const [isSuccess, setIsSucces] = useState(true);
+  const { productsState, isSuccess } = useContext(ProductsContext);
 
-  const loadCatalogue = async () => {
-    const result = await simpleFetch(apiUrls.products);
-    setIsSucces(result.isSuccess);
-    setCatalogue(result.data);
-  };
-
-  useEffect(() => {
-    loadCatalogue();
-  }, []);
-
-  return catalogue.length == 0 ? "" : !isSuccess ? <ErrorScreen></ErrorScreen> : <ProductList catalogue={catalogue}></ProductList>;
+  return !isSuccess ? <ErrorScreen /> : !productsState ? "" : <ProductList catalogue={productsState}></ProductList>;
 };
