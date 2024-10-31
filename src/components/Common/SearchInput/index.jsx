@@ -1,30 +1,27 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import formDataRetriever from "../../../hooks/formDataRetriever";
 import { ProductsContext } from "../../../context/ProductsContext";
 import styles from "./styles.module.css";
 import { SearchResult } from "./SearchResult";
 
 const SearchInput = ({ responsiveClass = "" }) => {
-  const initialForm = {
-    searchInput: "",
-  };
-
   const { productsState } = useContext(ProductsContext);
   const [isFocused, setIsFocused] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
   const formRef = useRef(null);
   const productsContainerRef = useRef(null);
   const timeoutRef = useRef(null);
-  const { onFormInputChange, formData } = formDataRetriever(initialForm);
+  const [inputData, setInputData] = useState("");
 
-  const handleSubmit = async (e) => {
-    //filter results
-    let result = productsState.filter((product) => product.title.toLowerCase().includes(formData.searchInput.toLowerCase()));
-    setSearchResult(result);
+  //search input handle to get the product write
+  const handleOnChange = (e) => {
+    setInputData(e.target.value);
   };
 
-  const handleOnFocus = () => {
-    setIsFocused(true);
+  //send to search page
+  const handleFormSearch = (e) => {
+    e.preventDefault();
+    const valueEncoded = encodeURIComponent(inputData);
+    location.href = `/search?sv=${valueEncoded}`;
   };
 
   const handleMouseDown = (e) => {
@@ -36,20 +33,20 @@ const SearchInput = ({ responsiveClass = "" }) => {
   };
 
   //IF product are clicked, remove search product result and overlay
-  const handleProductClick = () => {
+  const handleProductSelected = () => {
     setIsFocused(false);
     setSearchResult(null);
-    formData.searchInput = "";
+    setInputData("");
   };
 
   useEffect(() => {
-    if (!formData.searchInput) {
+    if (!inputData) {
       setSearchResult(null);
       setIsFocused(false);
       return;
     }
     timeoutRef.current = setTimeout(() => {
-      let result = productsState.filter((product) => product.title.toLowerCase().includes(formData.searchInput.toLowerCase()));
+      let result = productsState.filter((product) => product.title.toLowerCase().includes(inputData.toLowerCase()));
       setIsFocused(true);
       setSearchResult(result);
     }, 1000);
@@ -57,7 +54,7 @@ const SearchInput = ({ responsiveClass = "" }) => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [formData.searchInput, productsState]);
+  }, [inputData, productsState]);
 
   //Delete mouse event
   useEffect(() => {
@@ -69,9 +66,9 @@ const SearchInput = ({ responsiveClass = "" }) => {
   return (
     <>
       <div className={`${responsiveClass} position-relative d-flex justify-content-center `}>
-        <form className={`container input-group`} ref={formRef}>
-          <input type="text" name="searchInput" className="form-control" placeholder="Buscar producto" aria-label="search" aria-describedby="search-button" value={formData.searchInput} onChange={onFormInputChange} />
-          <button name="searchButton" className="btn btn-outline-secondary" type="button" id="search-button" onClick={handleSubmit}>
+        <form className={`container input-group`} ref={formRef} onSubmit={handleFormSearch}>
+          <input type="text" name="searchInput" className="form-control" placeholder="Buscar producto" aria-label="search" aria-describedby="search-button" value={inputData} onChange={handleOnChange} />
+          <button name="searchButton" className="btn btn-outline-secondary" type="button" id="search-button" onClick={handleFormSearch}>
             Buscar
           </button>
         </form>
@@ -80,7 +77,7 @@ const SearchInput = ({ responsiveClass = "" }) => {
         <div className={`${styles.productsContainer}`} ref={productsContainerRef}>
           {/* check searchResult, if it's null, don't render products, otherwise, render */}
           {searchResult ? (
-            <div className="container-fluid p-0" onClick={handleProductClick}>
+            <div className="container-fluid p-0" onClick={handleProductSelected}>
               <ul className="list-group">
                 {searchResult.length > 0 ? (
                   searchResult.map((product) => (
@@ -89,7 +86,7 @@ const SearchInput = ({ responsiveClass = "" }) => {
                     </li>
                   ))
                 ) : (
-                  <p>No se encontraron resultados para la busqueda</p>
+                  <p className="m-0 p-3">No se encontraron resultados para la busqueda</p>
                 )}
               </ul>
             </div>

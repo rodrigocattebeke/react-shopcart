@@ -9,6 +9,7 @@ import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
 import { ProductsProvider } from "./context/ProductsContext";
+import { SearchPage } from "./pages/SearchPage";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />}></Route>
             <Route path="/login" element={<UserLoginPage />}></Route>
             <Route path="/products/*" element={<ProductViewPage />}></Route>
+            <Route path="/search" element={<SearchPage />}></Route>
             <Route path="/*" element={<Navigate to="/" />}></Route>
           </Routes>
         </main>
