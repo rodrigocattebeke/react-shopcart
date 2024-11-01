@@ -16,10 +16,10 @@ export const SearchProducts = () => {
     if (!productsState) return;
 
     const urlVariables = new URLSearchParams(location.search);
-    const searchValue = urlVariables.get("sv").toLocaleLowerCase();
+    const searchValue = urlVariables.get("sv").toLowerCase();
 
     if (productsState.length > 0) {
-      const products = productsState.filter((product) => product.title.toLocaleLowerCase().includes(searchValue));
+      const products = productsState.filter((product) => product.title.toLowerCase().includes(searchValue));
       setProductsSearched(products);
       setIsLoading(false);
     } else {

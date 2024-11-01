@@ -20,7 +20,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
   return (
     <section className={`navbar navbar-expand-md header-links-container py-0 ${responsiveClass}`}>
       <div className="container-fluid justify-content-md-evenly">
-        <div className="order-2 order-md-1 d-none d-md-flex justify-content-center w-50">
+        <div className="order-2 order-md-1  d-flex justify-content-center w-50">
           <Link className="navbar-brand" to="/">
             <img src={logo} className={`${styles.navbarImg}`} />
           </Link>
