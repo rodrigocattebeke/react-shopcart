@@ -164,7 +164,7 @@ export const ProductsSale = ({ setIsLoading }) => {
                 <p>¡Oferta por tiempo limitado!</p>
               </div>
               <div className="col-12 d-flex align-items-center justify-content-center">
-                <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 20, month: 10, year: 2024 }} />
+                <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 21, month: 12, year: 2024 }} />
               </div>
             </div>
           </div>
