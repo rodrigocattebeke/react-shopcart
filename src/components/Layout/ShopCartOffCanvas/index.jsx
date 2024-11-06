@@ -20,7 +20,7 @@ export const ShopCartOffCanvas = () => {
         </h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div className="offcanvas-body shopcart-body">
+      <div className="offcanvas-body h-100">
         <div className={`shopcart-body-items h-75 overflow-y-auto overflow-x-hidden ${cartState.cartProducts.length < 1 ? "text-center align-content-center" : ""}`}>{cartState.cartProducts.length < 1 ? "Carrito vacío" : cartState.cartProducts.map((product) => <ProductCartInfo key={product.id} product={product} />)}</div>
         {cartState.cartProducts.length < 1 ? (
           ""

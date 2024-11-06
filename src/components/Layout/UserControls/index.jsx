@@ -11,7 +11,7 @@ export const UserControls = ({ responsiveClass = "" }) => {
       {/* USer control icons */}
 
       <div className={`${styles.userControlsContainer} ${responsiveClass}`}>
-        <div>
+        <div className={`${styles.cartIconContainer}`}>
           <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             shopping_cart
           </span>
@@ -21,9 +21,7 @@ export const UserControls = ({ responsiveClass = "" }) => {
           person
         </Link>
       </div>
-
       {/* User control shopcart (offcanvas) */}
-
       <ShopCartOffCanvas></ShopCartOffCanvas>
     </>
   );

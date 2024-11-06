@@ -21,7 +21,10 @@
     visibility: visible;
 }
 
-
+.cartIconContainer{
+    display: flex;
+    position: relative;
+}
 
 .shopcartBodyItems{
     height: 80%;
@@ -32,14 +35,10 @@
 }
 
 .userControlsContainer{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.userControlsContainer > div {
-    display: flex;
-    position: relative;
 }
 
 .userControlPerson, .userControlCart{
