@@ -1,21 +1,21 @@
 import { useContext } from "react";
-import "./card.css";
+import styles from "./styles.module.css";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
 import { moneyFormat } from "../../../hooks/moneyFormat";
 import { dolarToPYG } from "../../../hooks/dolarToPYG";
 
-export const ProductCard = ({ product = {} }) => {
+export const ExpandProductCard = ({ product = {} }) => {
   const { addProductToCart } = useContext(CartContext);
   return (
-    <div className="card" to={`/products/${product.id}`} data-id={product.id}>
-      <Link className="card-img-container" to={`/products/${product.id}`}>
-        <img src={product.image} className="card-img" alt={product.title} />
+    <div className={`${styles.card} card`} to={`/products/${product.id}`} data-id={product.id}>
+      <Link className={`${styles.cardImgContainer}`} to={`/products/${product.id}`}>
+        <img src={product.image} className={`${styles.cardImg} card-img`} alt={product.title} />
       </Link>
-      <div className="card-body">
+      <div className={`${styles.cardBody} card-body`}>
         <Link to={`/products/${product.id}`}>
-          <h4 className="card-title">{product.title}</h4>
-          <p className="card-price">Gs. {moneyFormat(dolarToPYG(product.price))}</p>
+          <h4 className={`${styles.cardTitle} card-title`}>{product.title}</h4>
+          <p className={`${styles.cardPrice} card-price`}>Gs. {moneyFormat(dolarToPYG(product.price))}</p>
         </Link>
         <button className="btn button-color-primary" onClick={() => addProductToCart(product)}>
           <span className={`material-symbols-outlined addToCartIcon`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">

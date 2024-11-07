@@ -26,7 +26,7 @@ export const Header = () => {
         headerRef.current.classList.remove(`${styles.compactHeader}`);
         if (!timeout.current) {
           timeout.current = setTimeout(() => {
-            document.querySelector(".offcanvas").style.display = "block";
+            document.querySelector(".offcanvas").style.display = "flex";
             timeout.current = null;
           }, 500);
         }

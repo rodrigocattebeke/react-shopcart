@@ -3,6 +3,8 @@ import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import { moneyFormat } from "../../../hooks/moneyFormat";
+import { dolarToPYG } from "../../../hooks/dolarToPYG";
 
 const removeBodyStyles = () => {
   const bodyStyles = document.body.style;
@@ -25,10 +27,10 @@ export const ShopCartOffCanvas = () => {
         {cartState.cartProducts.length < 1 ? (
           ""
         ) : (
-          <div className="shopcart-body-actions align-items-center  d-flex flex-column h-25 justify-content-between ">
+          <div className="shopcart-body-actions align-items-center d-flex flex-column h-25 justify-content-between ">
             <div className={`${styles.totalPrice} d-flex justify-content-between w-100`}>
               <p>Total:</p>
-              <p>{getTotalPrice()}</p>
+              <p>Gs. {moneyFormat(dolarToPYG(getTotalPrice()))}</p>
             </div>
             <Link to="/checkout" className="btn btn-success" onClick={removeBodyStyles}>
               Finalizar pedido

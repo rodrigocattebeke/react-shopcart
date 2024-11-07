@@ -6,6 +6,7 @@
     min-height: 200px;
     max-height: 250px;
     border: 0;
+    padding: 0 5px 5px 5px;
     transition: box-shadow .3s;
 }
 
@@ -28,7 +29,15 @@
 }
 
 .card-body > button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     font-size: .8rem;
+}
+
+.card-body > button > span {
+    font-size: 1.3rem;
 }
 
 .card-title{
@@ -36,8 +45,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap:nowrap ;
-    font-size: 1.3rem;
+    font-size: 1rem;
     width: 100%;
+    margin: 0;
     color: var(--font-primary-color);
 }
 
@@ -54,7 +64,8 @@
 }
 
 .card-price{
-    font-weight:500;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--font-price-color);
+    margin:.4rem 0;
 }

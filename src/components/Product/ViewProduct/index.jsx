@@ -7,6 +7,7 @@ import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
 import { Link, useLocation } from "react-router-dom";
 import { apiUrls } from "../../../config/apiUrls";
+import { moneyFormat } from "../../../hooks/moneyFormat";
 
 export const ViewProduct = () => {
   const { addProductToCart } = useContext(CartContext);
@@ -60,7 +61,7 @@ export const ViewProduct = () => {
                 {product?.category}
               </Link>
             </small>
-            <p>Precio: ${product?.price}</p>
+            <p>Precio: Gs. {moneyFormat(product?.price * 7800)}</p>
           </div>
           <div className={`${styles.addCartContainer}`}>
             <QuantitySelector initialQuantity={1} onQuantityChange={handleQuantity} />

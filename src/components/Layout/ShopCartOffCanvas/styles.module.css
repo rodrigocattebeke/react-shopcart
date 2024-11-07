@@ -3,6 +3,11 @@
     font-weight: 500;
 }
 
+.offCanvas{
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
 @media screen and (max-width: 500px){
     .offCanvas{
         min-width: 100vw !important; 

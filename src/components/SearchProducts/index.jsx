@@ -4,6 +4,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { useLocation } from "react-router-dom";
 import { ErrorScreen } from "../Common/ErrorScreen";
 import { Loader } from "../Common/Loader";
+import { ExpandProductList } from "../Product/ExpandProductList";
 
 export const SearchProducts = () => {
   const [productsSearched, setProductsSearched] = useState([]);
@@ -28,5 +29,5 @@ export const SearchProducts = () => {
     }
   }, [location.search, productsState]);
 
-  return productsSearched.length == 0 && isLoading ? <Loader /> : productsSearched.length == 0 && !isLoading ? <ErrorScreen errorMessage="No se encontraron resultados para la búsqueda." /> : <ProductList catalogue={productsSearched} />;
+  return productsSearched.length == 0 && isLoading ? <Loader /> : productsSearched.length == 0 && !isLoading ? <ErrorScreen errorMessage="No se encontraron resultados para la búsqueda." /> : <ExpandProductList catalogue={productsSearched} />;
 };

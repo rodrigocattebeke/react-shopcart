@@ -7,17 +7,17 @@
 
 
     /* BUTTONS COLORS */
-    --button-background-color: rgb(0, 51, 255);
+    --button-background-color: rgb(220, 0, 51);
     --button-font-color: rgb(255, 255, 255);
-    --button-font-hover-color: rgb(175, 175, 175);
-    --button-hover-color: rgb(1, 36, 173);
-    --button-active-background-color: rgb(4, 26, 116);
+    --button-font-hover-color: rgb(255, 255, 255);
+    --button-hover-color: rgb(162, 0, 38);
+    --button-active-background-color: rgb(155, 0, 36);
 
     /* FONT COLORS */
     --font-primary-color: rgb(0, 0, 0);
     --font-secondary-color: rgb(120, 118, 118);
     --font-tertiary-color: rgb(227, 227, 227);
-    --font-price-color: rgb(0, 105, 0);
+    --font-price-color: rgb(0, 0, 0);
 
     /* PRIMARY COLORS */
     --primary-color: rgb(0, 0, 0);
@@ -27,9 +27,9 @@
     --secondary-color: rgb(171, 171, 171);
 
     /* LOADER COLORS */
-    --loader-color-1: rgb(255, 150, 150);
-    --loader-color-2: rgb(227, 227, 227);
-    --loader-color-3: rgb(108, 105, 194);
+    --loader-color-1: rgb(220, 0, 51);
+    --loader-color-2: rgb(147, 64, 84);
+    --loader-color-3: rgb(159, 137, 142);
 }
 
 /* RESET */

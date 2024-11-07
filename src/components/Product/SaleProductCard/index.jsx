@@ -2,6 +2,8 @@ import { useContext } from "react";
 import styles from "./styles.module.css";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
+import { moneyFormat } from "../../../hooks/moneyFormat";
+import { dolarToPYG } from "../../../hooks/dolarToPYG";
 
 export const SaleProductCard = ({ product = {} }) => {
   const { addProductToCart } = useContext(CartContext);
@@ -16,11 +18,16 @@ export const SaleProductCard = ({ product = {} }) => {
       <div className={`card-body ${styles.cardBody}`}>
         <Link to={`/products/${product.id}`}>
           <h4 className={`card-title ${styles.cardTitle}`}>{product.title}</h4>
-          <p className={`${styles.oldPrice}`}>${product.oldPrice}</p>
-          <p className={`${styles.newPrice}`}>${product.price}</p>
+          <div className={`${styles.priceContainer}`}>
+            <p className={`${styles.newPrice}`}>Gs. {moneyFormat(dolarToPYG(product.price))}</p>
+            <p className={`${styles.oldPrice}`}>Gs. {moneyFormat(dolarToPYG(product.oldPrice))}</p>
+          </div>
         </Link>
-        <button className="btn btn-primary" onClick={() => addProductToCart(product)}>
-          agregar al carrito
+        <button className="btn button-color-primary" onClick={() => addProductToCart(product)}>
+          <span className={`material-symbols-outlined addToCartIcon`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            shopping_cart
+          </span>
+          Agregar al carrito
         </button>
       </div>
     </div>
