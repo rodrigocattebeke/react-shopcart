@@ -4,16 +4,23 @@ import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
 import { moneyFormat } from "../../../hooks/moneyFormat";
 import { dolarToPYG } from "../../../hooks/dolarToPYG";
+import { imgFlyAnimation } from "../../../hooks/imgFlyAnimation";
 
 export const SaleProductCard = ({ product = {} }) => {
   const { addProductToCart } = useContext(CartContext);
   product = { ...product, oldPrice: Number.parseFloat(product.price + product.price * 0.3).toFixed(2) };
+
+  const handleButtonClick = (e, product) => {
+    imgFlyAnimation(e);
+    addProductToCart(product);
+  };
+
   return Object.keys(product).length == 0 ? (
     ""
   ) : (
     <div className={`card ${styles.card}`} to={`/products/${product.id}`} data-id={product.id}>
       <Link className={`${styles.cardImgContainer}`} to={`/products/${product.id}`}>
-        <img src={product.image} className={`${styles.cardImg}`} alt={product.title} />
+        <img src={product.image} className={`${styles.cardImg} cardImg`} alt={product.title} />
       </Link>
       <div className={`card-body ${styles.cardBody}`}>
         <Link to={`/products/${product.id}`}>
@@ -23,12 +30,14 @@ export const SaleProductCard = ({ product = {} }) => {
             <p className={`${styles.oldPrice}`}>Gs. {moneyFormat(dolarToPYG(product.oldPrice))}</p>
           </div>
         </Link>
-        <button className="btn button-color-primary" onClick={() => addProductToCart(product)}>
-          <span className={`material-symbols-outlined addToCartIcon`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            shopping_cart
-          </span>
-          Agregar al carrito
-        </button>
+        <div className={`${styles.buttonContainer}`}>
+          <button className="btn button-color-primary" onClick={(e) => handleButtonClick(e, product)}>
+            <span className={`material-symbols-outlined addToCartIcon`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              shopping_cart
+            </span>
+            Agregar al carrito
+          </button>
+        </div>
       </div>
     </div>
   );

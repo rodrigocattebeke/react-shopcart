@@ -17,11 +17,14 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
     getCategories();
   }, []);
 
+  const closeMenu = () => {
+    console.log(document.querySelector(".navbar-toggler").style);
+  };
   return (
     <section className={`navbar navbar-expand-md header-links-container py-0 ${responsiveClass}`}>
-      <div className="container-fluid justify-content-md-evenly">
+      <div className="container-fluid justify-content-md-evenly p-0">
         <div className="order-2 order-md-1  d-flex justify-content-center w-50">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand me-0" to="/">
             <img src={logo} className={`${styles.navbarImg}`} />
           </Link>
         </div>
@@ -40,7 +43,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
                 {categories.length < 1
                   ? ""
                   : categories.map((category, index) => (
-                      <li key={index}>
+                      <li key={index} onClick={closeMenu}>
                         <Link className="dropdown-item" to={`/category/${category}`}>
                           {category}
                         </Link>

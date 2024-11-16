@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { NavBar } from "../NavBar";
 import styles from "./styles.module.css";
-import { useElementRefSize } from "../../../hooks/useElementRefSize";
+import { useElementRefSize } from "../../../hooks/useElementRefResize";
 export const Header = () => {
   const headerRef = useRef(null);
   const { height, width } = useElementRefSize(headerRef);
@@ -28,7 +28,7 @@ export const Header = () => {
           timeout.current = setTimeout(() => {
             document.querySelector(".offcanvas").style.display = "flex";
             timeout.current = null;
-          }, 500);
+          }, 1100);
         }
       }
       prevScrollRef.current = currentScroll;

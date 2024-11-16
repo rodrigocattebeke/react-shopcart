@@ -100,8 +100,6 @@ export const ProductsSale = ({ setIsLoading }) => {
       if (stepsTaken == 0) return;
       newStepsTaken = stepsTaken - 1;
     }
-
-    console.log(newStepsTaken, scrollLeft);
     setStepsTaken(newStepsTaken);
     return;
   };

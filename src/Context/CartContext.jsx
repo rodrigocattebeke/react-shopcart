@@ -93,7 +93,7 @@ export const CartProvider = ({ children }) => {
     return totalPrice.toFixed(2);
   };
 
-  return <CartContext.Provider value={{ cartState, addProductToCart, modifyProductQuantity, removeProductFromCart, getTotalPrice }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ addProductToCart, cartState, getTotalPrice, modifyProductQuantity, removeProductFromCart }}>{children}</CartContext.Provider>;
 };
 
 export { CartContext };

@@ -6,12 +6,14 @@ import styles from "./userControls.module.css";
 
 export const UserControls = ({ responsiveClass = "" }) => {
   const { cartState } = useContext(CartContext);
+  //
+
   return (
     <>
       {/* USer control icons */}
 
       <div className={`${styles.userControlsContainer} ${responsiveClass}`}>
-        <div className={`${styles.cartIconContainer}`}>
+        <div className={`${styles.cartIconContainer} imgFlyHere`}>
           <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             shopping_cart
           </span>

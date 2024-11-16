@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ const removeBodyStyles = () => {
 
 export const ShopCartOffCanvas = () => {
   const { cartState, getTotalPrice } = useContext(CartContext);
+
   return (
     <div className={`${styles.offCanvas} offcanvas offcanvas-end shopcart-menu`} tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div className="offcanvas-header shopcart-header">
@@ -27,7 +28,7 @@ export const ShopCartOffCanvas = () => {
         {cartState.cartProducts.length < 1 ? (
           ""
         ) : (
-          <div className="shopcart-body-actions align-items-center d-flex flex-column h-25 justify-content-between ">
+          <div className="shopcart-body-actions align-items-center d-flex flex-column h-25 gap-2 ">
             <div className={`${styles.totalPrice} d-flex justify-content-between w-100`}>
               <p>Total:</p>
               <p>Gs. {moneyFormat(dolarToPYG(getTotalPrice()))}</p>
