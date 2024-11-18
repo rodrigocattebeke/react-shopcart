@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ProductList } from "./Product/ProductList";
 import { ErrorScreen } from "./Common/ErrorScreen";
 import { ProductsContext } from "../context/ProductsContext";
@@ -12,5 +12,5 @@ export const HomeCatalogue = ({ setIsLoading }) => {
     }
   }, [productsState, setIsLoading]);
 
-  return !isSuccess ? <ErrorScreen /> : !productsState ? "" : <ProductList catalogue={productsState}></ProductList>;
+  return !isSuccess ? <ErrorScreen /> : !productsState ? "" : <ProductList products={productsState}></ProductList>;
 };
