@@ -3,7 +3,7 @@ import { ProductCard } from "../ProductCard";
 import styles from "./styles.module.css";
 
 export const ProductList = ({ products = [] }) => {
-  return products.length == 0 ? (
+  return !Array.isArray(products) || !products || products.length == 0 ? (
     <ErrorScreen errorMessage="No hay productos para mostrar"></ErrorScreen>
   ) : (
     <section className={`container ${styles.listContainer}`}>

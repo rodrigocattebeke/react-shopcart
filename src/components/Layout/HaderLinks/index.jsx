@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import simpleFetch from "../../../hooks/simpleFetch";
+import simpleFetch from "../../../helpers/simpleFetch";
 import { apiUrls } from "../../../config/apiUrls";
 import { useEffect, useState } from "react";
 import styles from "./headerLinks.module.css";
@@ -18,7 +18,8 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
   }, []);
 
   const closeMenu = () => {
-    console.log(document.querySelector(".navbar-toggler").style);
+    console.log("al tocar esto, tengo que cerrar el menu");
+    // console.log(document.querySelector(".navbar-toggler").style);
   };
   return (
     <section className={`navbar navbar-expand-md header-links-container py-0 ${responsiveClass}`}>

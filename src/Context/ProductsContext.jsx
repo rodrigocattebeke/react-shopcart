@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import simpleFetch from "../hooks/SimpleFetch";
 import { apiUrls } from "../config/apiUrls";
+import simpleFetch from "../helpers/simpleFetch";
 
 const ProductsContext = createContext();
 

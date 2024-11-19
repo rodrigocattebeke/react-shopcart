@@ -2,9 +2,9 @@ import { useContext } from "react";
 import "./card.css";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
-import { moneyFormat } from "../../../hooks/moneyFormat";
-import { dolarToPYG } from "../../../hooks/dolarToPYG";
-import { imgFlyAnimation } from "../../../hooks/imgFlyAnimation";
+import { moneyFormat } from "../../../helpers/moneyFormat";
+import { dolarToPYG } from "../../../helpers/dolarToPYG";
+import { imgFlyAnimation } from "../../../helpers/imgFlyAnimation";
 
 export const ProductCard = ({ product = {} }) => {
   const { addProductToCart } = useContext(CartContext);

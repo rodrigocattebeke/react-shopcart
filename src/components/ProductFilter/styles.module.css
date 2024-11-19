@@ -1,0 +1,23 @@
+.filterOptionsContainer{
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    height: 2rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    
+}   
+
+.filterOptionsContainer > p{
+    font-size: 1rem;
+    padding-left: .2rem;
+}
+
+.filterOptionsContainer > select{
+    font-size: 1rem;
+    padding-right: .2rem;
+    border-radius: 3px;
+    border: none;
+    height: 100%;
+}

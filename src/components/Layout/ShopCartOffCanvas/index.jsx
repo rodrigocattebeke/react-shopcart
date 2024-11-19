@@ -3,8 +3,8 @@ import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import { CartContext } from "../../../Context/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import { moneyFormat } from "../../../hooks/moneyFormat";
-import { dolarToPYG } from "../../../hooks/dolarToPYG";
+import { moneyFormat } from "../../../helpers/moneyFormat";
+import { dolarToPYG } from "../../../helpers/dolarToPYG";
 
 const removeBodyStyles = () => {
   const bodyStyles = document.body.style;

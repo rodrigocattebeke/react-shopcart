@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useFormDataRetriever from "../../hooks/formDataRetriever";
+import useFormDataRetriever from "../../helpers/formDataRetriever";
 
 export const RegisterForm = ({ classNames = "" }) => {
   const initialForm = { user: "", email: "", password: "" };

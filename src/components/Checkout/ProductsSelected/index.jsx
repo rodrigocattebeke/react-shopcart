@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { CartContext } from "../../../Context/CartContext";
 import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import styles from "./styles.module.css";
-import { moneyFormat } from "../../../hooks/moneyFormat";
-import { dolarToPYG } from "../../../hooks/dolarToPYG";
+import { moneyFormat } from "../../../helpers/moneyFormat";
+import { dolarToPYG } from "../../../helpers/dolarToPYG";
 
 export const ProductsSelected = ({}) => {
   const { cartState, getTotalPrice } = useContext(CartContext);

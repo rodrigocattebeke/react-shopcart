@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import simpleFetch from "../../hooks/SimpleFetch";
+import simpleFetch from "../../helpers/simpleFetch";
 import { apiUrls } from "../../config/apiUrls";
 import styles from "./styles.module.css";
 import { SaleProductCard } from "../Product/SaleProductCard";
@@ -24,6 +24,7 @@ export const ProductsSale = ({ setIsLoading }) => {
       setTotalCards(totalProducts); // totalCards = totalProducts viewed
 
       let res = await simpleFetch(apiUrls.saleProducts);
+      console.log(res);
       res = res.data.slice(0, totalProducts);
       setSaleProducts(res);
       setIsLoading(false);

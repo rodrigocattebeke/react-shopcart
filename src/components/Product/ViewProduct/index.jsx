@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { QuantitySelector } from "../../Common/QuantitySelector";
 import styles from "./ViewProduct.module.css";
-import simpleFetch from "../../../hooks/simpleFetch";
+import simpleFetch from "../../../helpers/simpleFetch";
 import { CartContext } from "../../../Context/CartContext";
 import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
 import { Link, useLocation } from "react-router-dom";
 import { apiUrls } from "../../../config/apiUrls";
-import { moneyFormat } from "../../../hooks/moneyFormat";
+import { moneyFormat } from "../../../helpers/moneyFormat";
 
 export const ViewProduct = () => {
   const { addProductToCart } = useContext(CartContext);

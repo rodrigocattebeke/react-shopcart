@@ -3,8 +3,8 @@ import { CartContext } from "../../../Context/CartContext";
 import styles from "./styles.module.css";
 import { QuantitySelector } from "../../Common/QuantitySelector";
 import { Link } from "react-router-dom";
-import { moneyFormat } from "../../../hooks/moneyFormat";
-import { dolarToPYG } from "../../../hooks/dolarToPYG";
+import { moneyFormat } from "../../../helpers/moneyFormat";
+import { dolarToPYG } from "../../../helpers/dolarToPYG";
 
 export const ProductCartInfo = ({ product = {}, isModifyActive = true }) => {
   const { cartState, modifyProductQuantity, removeProductFromCart } = useContext(CartContext);

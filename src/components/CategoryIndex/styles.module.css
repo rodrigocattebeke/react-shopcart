@@ -1,0 +1,26 @@
+.category{
+    font-size: 1rem;
+    margin-right: .3rem;
+}
+
+.category::marker{
+    content: none;
+}
+
+.category > a{
+    text-decoration: none;
+
+}
+
+.indexContainer{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color-secondary-transparent);
+}
+
+.prevCategory::after{
+    content: "/";
+    margin-left: .3rem;
+
+}
