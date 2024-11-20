@@ -4,6 +4,7 @@ import { Loader } from "../components/Common/Loader";
 import { ErrorScreen } from "../components/Common/ErrorScreen";
 import { ProductList } from "../components/Product/ProductList";
 import { ProductsContext } from "../context/ProductsContext";
+import { CategoryIndex } from "../components/CategoryIndex";
 
 export const SearchPage = () => {
   const location = useLocation();
@@ -35,9 +36,12 @@ export const SearchPage = () => {
   ) : productsSearched.length == 0 && !isLoading ? (
     <ErrorScreen errorMessage={`No se encontraron resultados para: "${searched}"`} />
   ) : (
-    <div className="container">
-      <p className="fs-3">Resultados de búsqueda para: {`"${searched}"`}</p>
-      <ProductList products={productsSearched}></ProductList>
+    <div className="container-fluid">
+      <CategoryIndex />
+      <div className="container">
+        <p className="fs-3">Resultados de búsqueda para: {`"${searched}"`}</p>
+        <ProductList products={productsSearched}></ProductList>
+      </div>
     </div>
   );
 };

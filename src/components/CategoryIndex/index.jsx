@@ -3,15 +3,16 @@ import styles from "./styles.module.css";
 import { useLocation } from "react-router-dom";
 
 export const CategoryIndex = () => {
-  const Location = useLocation();
+  const location = useLocation();
   const [categoryPaths, setCategoryPaths] = useState(null);
 
+  console.log(location.pathname);
   useEffect(() => {
     const getCategory = async () => {
-      setCategoryPaths(Location.pathname.split("category/")[1].split("/")); //set categorys of URL
+      setCategoryPaths(location.pathname.split("category/")[1].split("/")); //set categorys of URL
     };
     getCategory();
-  }, [Location.pathname]);
+  }, [location.pathname]);
 
   const pathToLiArray = (categorysArray) => {
     if (!categorysArray) return;
@@ -36,7 +37,7 @@ export const CategoryIndex = () => {
     return liOfCategorysArray;
   };
   return (
-    <div className={`${styles.indexContainer}`}>
+    <div className={`${styles.indexContainer} z-3`}>
       <div className="container">
         <ul className="d-flex m-0">
           <li className={`${styles.prevCategory + " " + styles.category}`}>

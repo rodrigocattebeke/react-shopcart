@@ -1,29 +1,49 @@
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 export const ProductFilter = ({ products = null, setFilteredProducts }) => {
-  if (!products) return console.warn("No hay productos que filtrar");
-  if (typeof setFilteredProducts !== "function") return console.warn("Hay que especificar una funcion para setear los productos filtrados en un state.");
+  const [filterSelected, setFilterSelected] = useState("relevance");
 
-  //se necesita un onchange que maneje los cambios en los filtros
+  const onSelectChange = (e) => {
+    if (!products) return console.warn("No hay productos que filtrar");
+    if (typeof setFilteredProducts !== "function") return console.warn("Hay que especificar una funcion para setear los productos filtrados en un state.");
 
-  // setFilteredProducts(products);
+    const copyProducts = products; //Copy of products
+
+    setFilterSelected(e.target.value);
+    switch (e.target.value) {
+      case "relevance":
+        return setFilteredProducts([...copyProducts]);
+      case "priceDesc":
+        return setFilteredProducts([...copyProducts.sort((a, b) => b.price - a.price)]);
+      case "priceAsc":
+        return setFilteredProducts([...copyProducts.sort((a, b) => a.price - b.price)]);
+      default:
+        return setFilteredProducts([...copyProducts]);
+    }
+  };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid position-relative mt-2 z-3">
       <div className="container">
-        <div>
-          <div className={`${styles.filterOptionsContainer}`}>
-            <p className="mb-0 me-1">Ordenar por</p>
-            <select name="filter" value={"relevance"} title="products filter">
-              <option value="relevance" title="relevance">
-                Relevancia
-              </option>
-              <option value="price" title="price">
-                Precio
-              </option>
-            </select>
+        <div className="row">
+          <div className="col-12 col-md-4">
+            <p className={`${styles.filterTile}`}>Ordenar productos por</p>
+            <div className={`${styles.filterOptionsContainer}`}>
+              <select name="filter" value={filterSelected} title="products filter" onChange={onSelectChange}>
+                <option value="relevance" title="relevance">
+                  Relevancia
+                </option>
+                <option value="priceDesc" title="price from high to low">
+                  Precio alto a bajo
+                </option>
+                <option value="priceAsc" title="price from low to high">
+                  Precio bajo a alto
+                </option>
+              </select>
+            </div>
+            <div></div>
           </div>
-          <div></div>
         </div>
       </div>
     </div>
