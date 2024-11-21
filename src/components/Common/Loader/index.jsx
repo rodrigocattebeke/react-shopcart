@@ -3,8 +3,6 @@ import styles from "./styles.module.css";
 export const Loader = ({ fullscreen = true }) => {
   //ADD "column[i]" IN THE CLASS FOR EDITING THE LOADER COLUMN COLOR (MAX 3), AND GO TO THE GLOBAL STYLES FOR CHANGE COLORS
 
-  console.log(fullscreen);
-
   return (
     <section className={`${styles.loaderContainer} ${fullscreen ? styles.fullscreen : ""}`}>
       <svg className={`${styles.loader}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

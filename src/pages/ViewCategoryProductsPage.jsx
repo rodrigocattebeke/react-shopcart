@@ -22,7 +22,7 @@ export const ViewCategoryProductsPage = () => {
       const categorySearched = location.pathname.split("/category/")[1]; //Get category for the url
       let category = categorySearched.split("/")[categorySearched.split("/").length - 1];
       category = category[0].toUpperCase() + category.slice(1);
-      setCategory(category);
+      setCategory(decodeURIComponent(category));
 
       const result = await fetchProductsByCategory(categorySearched);
       setCategoryProducts(result.data);
@@ -49,16 +49,20 @@ export const ViewCategoryProductsPage = () => {
       ) : (
         <>
           <CategoryIndex />
-          <div className="container my-3">
+          <div className="container my-3 z-3 position-relative">
             <p className="fs-2 m-0">{category}</p>
           </div>
           <ProductFilter products={categoryProducts} setFilteredProducts={setFilteredProducts} />
-          {isSimLoadingActive && (
-            <div className="container-fluid vh-100 position-fixed top-0 z-2">
-              <Loader fullscreen={false} />
-            </div>
-          )}
-          <CategoryProducts products={filteredProducts} />
+          <div className="position-relative">
+            {isSimLoadingActive && (
+              <div className="container-fluid position-absolute h-100 bg-white z-2">
+                <div>
+                  <Loader fullscreen={false} />
+                </div>
+              </div>
+            )}
+            <CategoryProducts products={filteredProducts} />
+          </div>
         </>
       )}
     </>

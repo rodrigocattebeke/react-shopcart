@@ -24,7 +24,6 @@ export const ProductsSale = ({ setIsLoading }) => {
       setTotalCards(totalProducts); // totalCards = totalProducts viewed
 
       let res = await simpleFetch(apiUrls.saleProducts);
-      console.log(res);
       res = res.data.slice(0, totalProducts);
       setSaleProducts(res);
       setIsLoading(false);

@@ -20,10 +20,12 @@ export const Header = () => {
       const currentScroll = window.scrollY;
 
       if (currentScroll > prevScrollRef.current) {
-        headerRef.current.classList.add(`${styles.compactHeader}`);
+        const searchContainer = headerRef.current.querySelector(".search-container");
+        const pxToTranslate = headerRef.current.clientHeight - searchContainer.clientHeight;
+        headerRef.current.style.transform = `translateY(-${pxToTranslate - 15}px)`;
         document.querySelector(".offcanvas").style.display = "none";
       } else {
-        headerRef.current.classList.remove(`${styles.compactHeader}`);
+        headerRef.current.style.transform = ``;
         if (!timeout.current) {
           timeout.current = setTimeout(() => {
             document.querySelector(".offcanvas").style.display = "flex";

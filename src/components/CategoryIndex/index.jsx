@@ -5,14 +5,18 @@ import { useLocation } from "react-router-dom";
 export const CategoryIndex = () => {
   const location = useLocation();
   const [categoryPaths, setCategoryPaths] = useState(null);
+  const [uniquesPaths, setUniquesPaths] = useState(["search"]); //Add a path (in lower case) that does not have a subpath, for view in the index the name of the path.
 
-  console.log(location.pathname);
   useEffect(() => {
     const getCategory = async () => {
-      setCategoryPaths(location.pathname.split("category/")[1].split("/")); //set categorys of URL
+      if (uniquesPaths.includes(location.pathname.split("/")[1].toLowerCase())) {
+        setCategoryPaths([location.pathname.split("/")[1].toLowerCase()]);
+      } else {
+        setCategoryPaths(location.pathname.split("/")[2].split("/")); //set all sub categorys of URL
+      }
     };
     getCategory();
-  }, [location.pathname]);
+  }, [location.pathname, uniquesPaths]);
 
   const pathToLiArray = (categorysArray) => {
     if (!categorysArray) return;

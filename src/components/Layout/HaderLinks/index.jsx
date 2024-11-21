@@ -18,8 +18,11 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
   }, []);
 
   const closeMenu = () => {
-    console.log("al tocar esto, tengo que cerrar el menu");
-    // console.log(document.querySelector(".navbar-toggler").style);
+    const hamburgerButton = document.querySelector(".nav-hamburger-button > button");
+    hamburgerButton.classList.add("collapsed");
+    hamburgerButton.ariaExpanded = false;
+    document.querySelector(".nav-links-container").classList.remove("show");
+    console.log(hamburgerButton);
   };
   return (
     <section className={`navbar navbar-expand-md header-links-container py-0 ${responsiveClass}`}>
@@ -29,12 +32,12 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
             <img src={logo} className={`${styles.navbarImg}`} />
           </Link>
         </div>
-        <div className="order-1 w-50">
+        <div className="order-1 w-50 nav-hamburger-button">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div className="collapse navbar-collapse order-3 mt-3 mt-md-0 w-50" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse nav-links-container order-3 mt-3 mt-md-0 w-50" id="navbarNavDropdown">
           <ul className="navbar-nav position-relative">
             <li className="nav-item dropdown position-relative">
               <div className={`nav-link dropdown-toggle ${styles.categoriesDropdown}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
