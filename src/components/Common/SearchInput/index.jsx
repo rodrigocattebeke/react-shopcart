@@ -67,8 +67,8 @@ const SearchInput = ({ responsiveClass = "" }) => {
     <>
       <div className={`${responsiveClass} search-container position-relative d-flex justify-content-center `}>
         <form className={`container input-group`} ref={formRef} onSubmit={handleFormSearch}>
-          <input type="text" name="searchInput" className="form-control" placeholder="Buscar producto" aria-label="search" aria-describedby="search-button" value={inputData} onChange={handleOnChange} />
-          <button name="searchButton" className="btn btn-outline-secondary" type="button" id="search-button" onClick={handleFormSearch}>
+          <input type="text" name="searchInput" className={`${styles.searchInput} form-control`} placeholder="Buscar producto" aria-label="search" aria-describedby="search-button" value={inputData} onChange={handleOnChange} />
+          <button name="searchButton" className={`${styles.searchButton} btn`} type="button" id="search-button" onClick={handleFormSearch}>
             Buscar
           </button>
         </form>

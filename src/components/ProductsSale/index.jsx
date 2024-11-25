@@ -48,7 +48,7 @@ export const ProductsSale = ({ setIsLoading }) => {
 
     if (carouselContainerRef.current) resizeObserver.observe(carouselContainerRef.current);
     return () => resizeObserver.unobserve(carouselCopy);
-  }, [saleProducts]);
+  }, []);
 
   //carousel resized verify and carousel total sections setter
   useEffect(() => {

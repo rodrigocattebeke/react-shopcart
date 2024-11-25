@@ -29,3 +29,19 @@
     opacity: 1;
     visibility: visible;
 }
+
+.searchButton , .searchInput{
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.searchButton:hover{
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--font-tertiary-color);
+}
+
+.searchInput:focus{
+    box-shadow: var(--primary-color) 0 0 6px -2px ;
+    border-color: var(--primary-color);
+}
