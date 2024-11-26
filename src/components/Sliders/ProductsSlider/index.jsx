@@ -137,7 +137,7 @@ export const ProductsSlider = ({ title = null, products = null, viewAllUrl = nul
   return !products ? (
     ""
   ) : (
-    <section className={`container`}>
+    <section className={`container`} style={{ minHeight: "550px" }}>
       <div className={`${styles.sliderTitle}`}>
         <p>{title}</p>
       </div>
