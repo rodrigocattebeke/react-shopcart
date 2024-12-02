@@ -4,6 +4,7 @@ import { apiUrls } from "../../config/apiUrls";
 import styles from "./styles.module.css";
 import { SaleProductCard } from "../Product/SaleProductCard";
 import { CountdownTimer } from "../Common/CountdownTimer";
+import { ofertaCompraOnlineImg } from "../../assets/img";
 
 export const ProductsSale = ({ setIsLoading }) => {
   const [carouselProductsContainerSize, setCarouselProductsContainerSize] = useState(0);
@@ -78,13 +79,6 @@ export const ProductsSale = ({ setIsLoading }) => {
     }
   };
 
-  //carousel control handle
-  const handleCarouselControl = (section) => {
-    if (!carouselContainerRef.current) return;
-    // select the carousel
-    setStepsTaken(section);
-  };
-
   const handleTouchEnd = () => {
     //select the carousel container
     const container = carouselContainerRef.current;
@@ -156,8 +150,11 @@ export const ProductsSale = ({ setIsLoading }) => {
           {/* Products sale container */}
           <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
             <div className="container-fluid row">
-              <div className="col-12 d-flex justify-content-center text-center">
-                <p>¡Oferta por tiempo limitado!</p>
+              <div className="col-12 d-flex justify-content-center text-center align-items-center flex-column">
+                <div className={`w-75`}>
+                  <img src={`${ofertaCompraOnlineImg}`} className={`${styles.saleProductInfoImg}`}></img>
+                </div>
+                <p>¡Oferta exclusivas para compras online!</p>
               </div>
               <div className="col-12 d-flex align-items-center justify-content-center">
                 <CountdownTimer limitTime={{ hour: [23, 59, 59], day: 21, month: 12, year: 2024 }} />
@@ -192,17 +189,6 @@ export const ProductsSale = ({ setIsLoading }) => {
             </div>
             <div className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerRight}`} onClick={() => handleCarouselArrows("foward")}>
               <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_forward_ios</span>
-            </div>
-
-            {/* carousel controls */}
-            <div className={`${styles.carouselControl}`}>
-              {Array(totalCarouselSections)
-                .fill(0)
-                .map((e, i) => (
-                  <span key={`${i}`} className="material-symbols-outlined" onClick={() => handleCarouselControl(i)}>
-                    {controlChecked == i ? "radio_button_checked" : "radio_button_unchecked"}
-                  </span>
-                ))}
             </div>
           </div>
         </div>

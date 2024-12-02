@@ -39,10 +39,23 @@ export const CountdownTimer = ({ limitTime = { hour: [0, 0, 0], day: null, month
   return !timeLimit ? (
     ""
   ) : (
-    <div className={styles.countdownContainer}>
-      <p>
-        {timeLimit.days}:{timeLimit.hours}:{timeLimit.minutes}:{timeLimit.seconds}
-      </p>
+    <div className={`${styles.countdownContainer}`}>
+      <div className={`${styles.timeContainer}`}>
+        <p>{timeLimit.days}</p>
+        <span className={`${styles.timeName}`}>Dias</span>
+      </div>
+      <div className={`${styles.timeContainer}`}>
+        <p>{timeLimit.hours}</p>
+        <span className={`${styles.timeName}`}>Horas</span>
+      </div>
+      <div className={`${styles.timeContainer}`}>
+        <p>{timeLimit.minutes}</p>
+        <span className={`${styles.timeName}`}>Mins.</span>
+      </div>
+      <div className={`${styles.timeContainer}`}>
+        <p>{timeLimit.seconds}</p>
+        <span className={`${styles.timeName}`}>Segs.</span>
+      </div>
     </div>
   );
 };

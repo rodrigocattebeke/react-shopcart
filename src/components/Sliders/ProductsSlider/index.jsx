@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../../Product/ProductCard";
 import styles from "./styles.module.css";
-import { Link } from "react-router-dom";
 
-export const ProductsSlider = ({ title = null, products = null, viewAllUrl = null }) => {
+export const ProductsSlider = ({ products = null }) => {
   const [sliderProductsContainerSize, setSliderProductsContainerSize] = useState(null);
   const [cardWidth, setCardWidth] = useState(100);
   const [stepsTaken, setStepsTaken] = useState(0);
@@ -137,11 +136,7 @@ export const ProductsSlider = ({ title = null, products = null, viewAllUrl = nul
   return !products ? (
     ""
   ) : (
-    <section className={`container`} style={{ minHeight: "550px" }}>
-      <div className={`${styles.sliderTitle}`}>
-        <p>{title}</p>
-      </div>
-
+    <section className={`container`}>
       <div className={`${styles.sliderContainer}`}>
         <div className={`${styles.sliderProductsContainer} d-flex justify-content-center`}>
           <div className={`${styles.sliderScrollContaniner}`} ref={sliderScrollContainerRef} onScroll={handleScroll}>
@@ -169,14 +164,6 @@ export const ProductsSlider = ({ title = null, products = null, viewAllUrl = nul
         <div className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerRight}`} onClick={() => handlesliderArrows("foward")}>
           <span className={`${styles.controlArrow} material-symbols-outlined`}>arrow_forward_ios</span>
         </div>
-      </div>
-      <div className={`${styles.viewAllButtonContainer}`}>
-        <Link to={`${viewAllUrl ? viewAllUrl : ""}`}>
-          <button className="btn button-color-primary">
-            Ver todos
-            <span className="material-symbols-outlined ms-1">arrow_forward</span>
-          </button>
-        </Link>
       </div>
     </section>
   );

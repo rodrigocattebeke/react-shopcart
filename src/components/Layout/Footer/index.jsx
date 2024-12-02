@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
-import whatsappIcon from "../../../assets/whatsapp-icon.svg";
-import facebookIcon from "../../../assets/facebook-icon.svg";
-import instagramIcon from "../../../assets/instagram-icon.svg";
+import whatsappIcon from "../../../assets/icons/whatsapp-icon.svg";
+import facebookIcon from "../../../assets/icons/facebook-icon.svg";
+import instagramIcon from "../../../assets/icons/instagram-icon.svg";
 
 export const Footer = () => {
   return (

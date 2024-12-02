@@ -81,31 +81,4 @@
     display: none;
 }
 
-.sliderTitle{
-    min-height: 80px;
-}
-
-.sliderTitle > *{
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.viewAllButtonContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.viewAllButtonContainer a{
-    text-decoration: none;
-}
-
-.viewAllButtonContainer button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 

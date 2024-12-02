@@ -3,7 +3,7 @@ import simpleFetch from "../../../helpers/simpleFetch";
 import { apiUrls } from "../../../config/apiUrls";
 import { useEffect, useState } from "react";
 import styles from "./headerLinks.module.css";
-import logo from "../../../assets/logo-sin-fondo.png";
+import { logoSinFondoImg } from "../../../assets/img";
 
 export const HeaderLinks = ({ responsiveClass = "" }) => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +29,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
       <div className="container-fluid justify-content-md-evenly p-0">
         <div className="order-2 order-md-1  d-flex justify-content-center w-50">
           <Link className="navbar-brand me-0" to="/">
-            <img src={logo} className={`${styles.navbarImg}`} />
+            <img src={logoSinFondoImg} className={`${styles.navbarImg}`} />
           </Link>
         </div>
         <div className="order-1 w-50 nav-hamburger-button">
