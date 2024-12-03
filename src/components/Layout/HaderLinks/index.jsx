@@ -32,7 +32,7 @@ export const HeaderLinks = ({ responsiveClass = "" }) => {
             <img src={logoSinFondoImg} className={`${styles.navbarImg}`} />
           </Link>
         </div>
-        <div className="order-1 w-50 nav-hamburger-button">
+        <div className="order-1 w-50 nav-hamburger-button d-md-none">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

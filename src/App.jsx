@@ -10,6 +10,7 @@ import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
 import { ProductsProvider } from "./context/ProductsContext";
 import { SearchPage } from "./pages/SearchPage";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   const location = useLocation();
@@ -19,24 +20,26 @@ function App() {
   const hideFooterLocations = ["/login"];
 
   return (
-    <ProductsProvider>
-      <CartProvider>
-        <ScrollToTop />
-        {!hideHeaderLocations.includes(location.pathname) && <Header />}
-        <main className="container-fluid p-0 min-vh-100">
-          <Routes>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route path="/category/*" element={<ViewCategoryProductsPage />}></Route>
-            <Route path="/checkout" element={<CheckoutPage />}></Route>
-            <Route path="/login" element={<UserLoginPage />}></Route>
-            <Route path="/products/*" element={<ProductViewPage />}></Route>
-            <Route path="/search" element={<SearchPage />}></Route>
-            <Route path="/*" element={<Navigate to="/" />}></Route>
-          </Routes>
-        </main>
-        {!hideFooterLocations.includes(location.pathname) && <Footer />}
-      </CartProvider>
-    </ProductsProvider>
+    <UserProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <ScrollToTop />
+          {!hideHeaderLocations.includes(location.pathname) && <Header />}
+          <main className="container-fluid p-0 min-vh-100">
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/category/*" element={<ViewCategoryProductsPage />}></Route>
+              <Route path="/checkout" element={<CheckoutPage />}></Route>
+              <Route path="/login" element={<UserLoginPage />}></Route>
+              <Route path="/products/*" element={<ProductViewPage />}></Route>
+              <Route path="/search" element={<SearchPage />}></Route>
+              <Route path="/*" element={<Navigate to="/" />}></Route>
+            </Routes>
+          </main>
+          {!hideFooterLocations.includes(location.pathname) && <Footer />}
+        </CartProvider>
+      </ProductsProvider>
+    </UserProvider>
   );
 }
 

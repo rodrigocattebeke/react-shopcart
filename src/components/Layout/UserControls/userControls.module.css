@@ -37,8 +37,10 @@
 .userControlsContainer{
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .userControlPerson, .userControlCart{
@@ -52,3 +54,36 @@
     cursor: pointer;
     color: var(--icon-primary-color-hover)
 }
+
+.userLogoutLinks{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.1;
+}
+
+.userLogoutLinks a{
+    text-decoration: none;
+}
+
+.userLogoutLinks li{
+    color: var(--font-primary-color);
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.userLogoutLinks  li:hover{
+    color: var(--font-secondary-color);
+}
+
+.userLogInName{
+    width: min-content;
+    max-width: 80px;
+    margin: 0;
+    line-height: .9;
+    text-wrap: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
