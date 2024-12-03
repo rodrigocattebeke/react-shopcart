@@ -8,14 +8,21 @@ import { ofertaCompraOnlineImg } from "../../assets/img";
 
 export const ProductsSale = ({ setIsLoading }) => {
   const [carouselProductsContainerSize, setCarouselProductsContainerSize] = useState(0);
-  const [controlChecked, setControlChecked] = useState(0);
+  const [isCarouselRefLoad, setIsCarouselRefLoad] = useState(false);
   const [saleProducts, setSaleProducts] = useState(undefined);
   const [stepsTaken, setStepsTaken] = useState(0);
   const [totalCards, setTotalCards] = useState(0);
   const [totalCarouselSections, setTotalCarouselSections] = useState(0);
-  const carouselContainerRef = useRef(null);
   const firstCardRef = useRef(null);
   const timeoutRef = useRef(null);
+  const carouselContainerRef = useRef(null);
+
+  const setCarouselRef = (node) => {
+    if (node) {
+      carouselContainerRef.current = node;
+      setIsCarouselRefLoad(true);
+    }
+  };
 
   // get sale products and set isLoading false
   useEffect(() => {
@@ -23,7 +30,6 @@ export const ProductsSale = ({ setIsLoading }) => {
       // totalProducts = total products in sale section
       const totalProducts = 5;
       setTotalCards(totalProducts); // totalCards = totalProducts viewed
-
       let res = await simpleFetch(apiUrls.saleProducts);
       res = res.data.slice(0, totalProducts);
       setSaleProducts(res);
@@ -33,11 +39,13 @@ export const ProductsSale = ({ setIsLoading }) => {
   }, [setIsLoading]);
 
   // observe and set carousel total width
+
   useEffect(() => {
     //set carousel width and total sections of carousel
+    console.log("no ha cargao");
     if (!carouselContainerRef.current) return;
     const carouselCopy = carouselContainerRef.current;
-
+    console.log(" cargao");
     // create a carousel container resize observer
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries.length) {
@@ -49,11 +57,11 @@ export const ProductsSale = ({ setIsLoading }) => {
 
     if (carouselContainerRef.current) resizeObserver.observe(carouselContainerRef.current);
     return () => resizeObserver.unobserve(carouselCopy);
-  }, []);
+  }, [isCarouselRefLoad]);
 
   //carousel resized verify and carousel total sections setter
   useEffect(() => {
-    if (!carouselContainerRef.current) return;
+    if (!carouselContainerRef.current || !firstCardRef.current) return;
     const numbOfCardsViewed = Math.round(carouselProductsContainerSize / firstCardRef.current.clientWidth);
     setTotalCarouselSections(Math.round(totalCards / numbOfCardsViewed)); //Total cards|steps results are the number of groups viewed in the carousel.
     setStepsTaken(0);
@@ -72,6 +80,7 @@ export const ProductsSale = ({ setIsLoading }) => {
     }
     if (action == "foward") {
       let newStepsTaken = stepsTaken + 1;
+      console.log(totalCarouselSections);
       if (newStepsTaken > totalCarouselSections - 1) newStepsTaken = 0; // 1 is substracted of totalCarouselSections because the group one is already viewed
 
       setStepsTaken(newStepsTaken);
@@ -129,7 +138,6 @@ export const ProductsSale = ({ setIsLoading }) => {
       left: stepsTaken * containerWidth,
       behavior: "smooth",
     });
-    setControlChecked(stepsTaken);
   }, [stepsTaken]);
 
   //Remove Refs if the component are desarmed
@@ -167,7 +175,7 @@ export const ProductsSale = ({ setIsLoading }) => {
           <div className={`${styles.carouselContainer} col-12 col-lg-6`}>
             {/* carousel elements */}
             <div className={`${styles.carouselProductsContainer} d-flex justify-content-center`}>
-              <div className={`${styles.carouselScrollContaniner}`} ref={carouselContainerRef} onScroll={handleScroll}>
+              <div className={`${styles.carouselScrollContaniner}`} ref={setCarouselRef} onScroll={handleScroll}>
                 <div className={`${styles.saleProductsCarousel}`} onTouchEnd={handleTouchEnd}>
                   {saleProducts.map((product, i) => (
                     <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
