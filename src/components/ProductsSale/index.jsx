@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import simpleFetch from "../../helpers/simpleFetch";
 import { apiUrls } from "../../config/apiUrls";
 import styles from "./styles.module.css";
-import { SaleProductCard } from "../Product/SaleProductCard";
+import { OnlineSaleProductCard } from "../Product/OnlineSaleProductCard";
 import { CountdownTimer } from "../Common/CountdownTimer";
 import { ofertaCompraOnlineImg } from "../../assets/img";
 
@@ -42,10 +42,8 @@ export const ProductsSale = ({ setIsLoading }) => {
 
   useEffect(() => {
     //set carousel width and total sections of carousel
-    console.log("no ha cargao");
     if (!carouselContainerRef.current) return;
     const carouselCopy = carouselContainerRef.current;
-    console.log(" cargao");
     // create a carousel container resize observer
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries.length) {
@@ -80,7 +78,6 @@ export const ProductsSale = ({ setIsLoading }) => {
     }
     if (action == "foward") {
       let newStepsTaken = stepsTaken + 1;
-      console.log(totalCarouselSections);
       if (newStepsTaken > totalCarouselSections - 1) newStepsTaken = 0; // 1 is substracted of totalCarouselSections because the group one is already viewed
 
       setStepsTaken(newStepsTaken);
@@ -154,7 +151,7 @@ export const ProductsSale = ({ setIsLoading }) => {
   ) : (
     <>
       <section className="container d-flex align-items-center justify-content-center my-5 pb-4 border-bottom">
-        <div className={`${styles.saleProductsContainer} row`}>
+        <div className={`${styles.saleProductsContainer} row row-gap-5`}>
           {/* Products sale container */}
           <div className={`${styles.saleProductsInfo} col-12 col-lg-6`}>
             <div className="container-fluid row">
@@ -179,7 +176,7 @@ export const ProductsSale = ({ setIsLoading }) => {
                 <div className={`${styles.saleProductsCarousel}`} onTouchEnd={handleTouchEnd}>
                   {saleProducts.map((product, i) => (
                     <div ref={i == 0 ? firstCardRef : null} className={`${styles.cardContainer} px-1`} key={`${product.id}`}>
-                      <SaleProductCard product={product} />
+                      <OnlineSaleProductCard product={product} />
                     </div>
                   ))}
                 </div>

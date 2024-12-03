@@ -6,7 +6,7 @@ import { moneyFormat } from "../../../helpers/moneyFormat";
 import { dolarToPYG } from "../../../helpers/dolarToPYG";
 import { imgFlyAnimation } from "../../../helpers/imgFlyAnimation";
 
-export const SaleProductCard = ({ product = {} }) => {
+export const OnlineSaleProductCard = ({ product = {} }) => {
   const { addProductToCart } = useContext(CartContext);
   product = { ...product, oldPrice: Number.parseFloat(product.price + product.price * 0.3).toFixed(2) };
 
