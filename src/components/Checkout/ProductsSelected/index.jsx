@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext";
+import { CartContext } from "../../../contextTemp/CartContext";
 import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import styles from "./styles.module.css";
 import { moneyFormat } from "../../../helpers/moneyFormat";

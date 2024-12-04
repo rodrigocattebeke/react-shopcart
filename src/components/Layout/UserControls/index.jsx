@@ -1,9 +1,9 @@
 import { ShopCartOffCanvas } from "../ShopCartOffCanvas";
 import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext";
+import { CartContext } from "../../../contextTemp/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./userControls.module.css";
-import { UserContext } from "../../../context/UserContext";
+import { UserContext } from "../../../contextTemp/UserContext";
 
 export const UserControls = ({ responsiveClass = "" }) => {
   const { cartState } = useContext(CartContext);

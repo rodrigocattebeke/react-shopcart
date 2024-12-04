@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../../../context/CartContext";
+import { CartContext } from "../../../contextTemp/CartContext";
 import styles from "./styles.module.css";
 import { QuantitySelector } from "../../Common/QuantitySelector";
 import { Link } from "react-router-dom";

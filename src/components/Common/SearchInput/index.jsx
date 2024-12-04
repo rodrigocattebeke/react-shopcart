@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { ProductsContext } from "../../../context/ProductsContext";
+import { ProductsContext } from "../../../contextTemp/ProductsContext";
 import styles from "./styles.module.css";
 import { SearchResult } from "./SearchResult";
 

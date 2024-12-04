@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Loader } from "../components/Common/Loader";
 import { ErrorScreen } from "../components/Common/ErrorScreen";
 import { ProductList } from "../components/Product/ProductList";
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../contextTemp/ProductsContext";
 import { CategoryIndex } from "../components/CategoryIndex";
 import { ProductFilter } from "../components/ProductFilter";
 

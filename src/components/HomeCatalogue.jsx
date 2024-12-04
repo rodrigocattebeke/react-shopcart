@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { ProductList } from "./Product/ProductList";
 import { ErrorScreen } from "./Common/ErrorScreen";
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../contextTemp/ProductsContext";
 
 export const HomeCatalogue = ({ setIsLoading }) => {
   const { productsState, isSuccess } = useContext(ProductsContext);
