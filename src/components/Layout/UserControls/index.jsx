@@ -1,6 +1,6 @@
 import { ShopCartOffCanvas } from "../ShopCartOffCanvas";
 import { useContext } from "react";
-import { CartContext } from "../../../Context/CartContext";
+import { CartContext } from "../../../context/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./userControls.module.css";
 import { UserContext } from "../../../context/UserContext";

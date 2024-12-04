@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { QuantitySelector } from "../../Common/QuantitySelector";
 import styles from "./ViewProduct.module.css";
 import simpleFetch from "../../../helpers/simpleFetch";
-import { CartContext } from "../../../Context/CartContext";
+import { CartContext } from "../../../context/CartContext";
 import { Loader } from "../../Common/Loader";
 import { ErrorScreen } from "../../Common/ErrorScreen";
 import { Link, useLocation } from "react-router-dom";

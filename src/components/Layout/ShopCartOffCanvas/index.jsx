@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ProductCartInfo } from "../../Product/ProductCartInfo";
-import { CartContext } from "../../../Context/CartContext";
+import { CartContext } from "../../../context/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { moneyFormat } from "../../../helpers/moneyFormat";

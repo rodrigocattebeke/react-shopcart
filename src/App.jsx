@@ -1,5 +1,5 @@
 import { HomePage } from "./pages/HomePage";
-import { CartProvider } from "./Context/CartContext";
+import { CartProvider } from "./context/CartContext.jsx";
 import { ProductViewPage } from "./pages/ProductViewPage";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Layout/Header";
@@ -8,7 +8,7 @@ import { UserLoginPage } from "./pages/UserLoginPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
-import { ProductsProvider } from "./context/ProductsContext.jsx";
+import { ProductsProvider } from "./context/ProductsContext";
 import { SearchPage } from "./pages/SearchPage";
 import { UserProvider } from "./context/UserContext";
 
