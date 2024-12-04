@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./QuantitySelector.css";
+import "./styles.css";
 
 export const QuantitySelector = ({ initialQuantity = 0, onQuantityChange }) => {
   const [inputValue, setInputValue] = useState(initialQuantity);
