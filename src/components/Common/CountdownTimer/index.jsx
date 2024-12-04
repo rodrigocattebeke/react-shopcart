@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
-import { timestampToDate } from "../../../helpers/timeStampToDate";
+import { timestampToDate } from "../../../helpers/timestampToDate";
 
 /**
  * @param {{
