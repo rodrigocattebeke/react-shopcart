@@ -15,7 +15,6 @@ export const UserProvider = ({ children }) => {
       isLogged: true,
       name,
     });
-    console.log(name);
   };
 
   const logOut = () => {

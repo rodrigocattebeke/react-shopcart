@@ -1,7 +1,6 @@
 import useFormDataRetriever from "../../helpers/formDataRetriever";
 import { UserContext } from "../../contexts/UserContext";
-import { useContext, useState } from "react";
-import { Loader } from "../Common/Loader";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginForm = ({ setIsLoaderActive, showFormClass = "" }) => {

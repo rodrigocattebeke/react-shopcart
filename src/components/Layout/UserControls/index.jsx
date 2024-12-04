@@ -26,7 +26,6 @@ export const UserControls = ({ responsiveClass = "" }) => {
           </Link>
           {!user.isLogged ? (
             <ul className={`${styles.userLogoutLinks}`}>
-              {/* hay que poner urlDelLogin o de register + #login o #register en cada uno */}
               <Link to="/login#login">
                 <li>Iniciar sesión</li>
               </Link>
