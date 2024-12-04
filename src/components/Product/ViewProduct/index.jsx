@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { QuantitySelector } from "../../Common/QuantitySelector";
-import styles from "./ViewProduct.module.css";
+import styles from "./styles.module.css";
 import simpleFetch from "../../../helpers/simpleFetch";
 import { CartContext } from "../../../contexts/CartContext";
 import { Loader } from "../../Common/Loader";
