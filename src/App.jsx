@@ -1,5 +1,5 @@
 import { HomePage } from "./pages/HomePage";
-import { CartProvider } from "./contextTemp/CartContext.jsx";
+import { CartProvider } from "./contexts/CartContext.jsx";
 import { ProductViewPage } from "./pages/ProductViewPage";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Layout/Header";
@@ -8,9 +8,9 @@ import { UserLoginPage } from "./pages/UserLoginPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
-import { ProductsProvider } from "./contextTemp/ProductsContext.jsx";
+import { ProductsProvider } from "./contexts/ProductsContext.jsx";
 import { SearchPage } from "./pages/SearchPage";
-import { UserProvider } from "./contextTemp/UserContext.jsx";
+import { UserProvider } from "./contexts/UserContext.jsx";
 
 function App() {
   const location = useLocation();
