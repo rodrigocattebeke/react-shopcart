@@ -8,7 +8,7 @@ import { UserLoginPage } from "./pages/UserLoginPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./components/Layout/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
-import { ProductsProvider } from "./context/ProductsContext";
+import { ProductsProvider } from "./context/ProductsContext.jsx";
 import { SearchPage } from "./pages/SearchPage";
 import { UserProvider } from "./context/UserContext";
 
