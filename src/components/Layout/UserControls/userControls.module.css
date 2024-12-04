@@ -73,7 +73,7 @@
 }
 
 .userLogoutLinks  li:hover{
-    color: var(--font-secondary-color);
+    color: var(--font-page-primary-color);
 }
 
 .userLogInName{

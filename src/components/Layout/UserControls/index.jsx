@@ -27,15 +27,15 @@ export const UserControls = ({ responsiveClass = "" }) => {
           {!user.isLogged ? (
             <ul className={`${styles.userLogoutLinks}`}>
               {/* hay que poner urlDelLogin o de register + #login o #register en cada uno */}
-              <Link>
+              <Link to="/login#login">
                 <li>Iniciar sesión</li>
               </Link>
-              <Link>
+              <Link to="/login#register">
                 <li>Registrarme</li>
               </Link>
             </ul>
           ) : (
-            <p className={`${styles.userLogInName} d-none d-md-block`}>Hola, Rodrigo</p>
+            <p className={`${styles.userLogInName} d-none d-md-block`}>Hola, {user.name}</p>
           )}
         </div>
       </div>
