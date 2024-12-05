@@ -26,6 +26,18 @@
     position: relative;
 }
 
+.dropdownContainer{
+    position: absolute;
+    width: max-content;
+    top: 100%;
+    left: 50%;
+    visibility:hidden;
+    opacity: 0;
+    transition: .3s;
+    transform: translateX(-50%);
+    box-shadow: rgb(0, 0, 0) 0 0 9px -5px ;
+}
+
 .shopcartBodyItems{
     height: 80%;
 }
@@ -77,13 +89,29 @@
 }
 
 .userLogInName{
-    width: min-content;
-    max-width: 80px;
     margin: 0;
-    line-height: .9;
-    text-wrap: wrap;
+    line-height: 1;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--font-primary-color);
+}
+
+.userLogInName:hover{
+    color: var(--icon-primary-color-hover);
+}
+
+.userLogInNameContainer{
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: 2.5rem;
+    max-width: 80px;
+    padding: auto;
+    text-wrap: wrap;
     cursor: pointer;
 }
 
+.userLogInNameContainer:hover .dropdownContainer{
+    visibility: visible;
+    opacity: 1;
+}

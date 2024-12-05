@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
 
   const logOut = () => {
     setUser(initialUserState);
+    window.location.reload();
   };
 
   return <UserContext.Provider value={{ user, logIn, logOut }}>{children}</UserContext.Provider>;

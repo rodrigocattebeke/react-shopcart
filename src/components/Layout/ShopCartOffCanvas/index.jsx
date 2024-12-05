@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ProductCartInfo } from "../../Product/ProductCartInfo";
 import { CartContext } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
@@ -16,9 +16,9 @@ export const ShopCartOffCanvas = () => {
   const { cartState, getTotalPrice } = useContext(CartContext);
 
   return (
-    <div className={`${styles.offCanvas} offcanvas offcanvas-end shopcart-menu`} tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div className={`${styles.offCanvas} offcanvas offcanvas-end shopcart-menu`} tabIndex="-1" id="shopcartOffCanvas" aria-labelledby="shopcartOffCanvasLabel">
       <div className="offcanvas-header shopcart-header">
-        <h5 className="offcanvas-title" id="offcanvasRightLabel">
+        <h5 className="offcanvas-title" id="shopcartOffCanvasLabel">
           Carrito
         </h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

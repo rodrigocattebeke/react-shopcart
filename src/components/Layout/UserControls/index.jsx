@@ -4,6 +4,8 @@ import { CartContext } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
 import styles from "./userControls.module.css";
 import { UserContext } from "../../../contexts/UserContext";
+import { UserControlsOffcanvas } from "./UserControlsOffCanvas";
+import { UserControlsLinks } from "./UserControlsLinks";
 
 export const UserControls = ({ responsiveClass = "" }) => {
   const { cartState } = useContext(CartContext);
@@ -15,17 +17,31 @@ export const UserControls = ({ responsiveClass = "" }) => {
 
       <div className={`${styles.userControlsContainer} ${responsiveClass}`}>
         <div className={`${styles.cartIconContainer} imgFlyHere`}>
-          <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <span className={`material-symbols-outlined ${(styles.userControl, styles.userControlCart)}`} data-bs-toggle="offcanvas" data-bs-target="#shopcartOffCanvas" aria-controls="shopcartOffCanvas">
             shopping_cart
           </span>
           <p className={`${styles.cartCounter} ${cartState.cartProducts.length > 0 ? `${styles.active}` : ""}`}>{cartState.cartProducts.length > 0 ? `${cartState.cartProducts.length}` : ""}</p>
         </div>
+
         <div className="d-flex align-items-center">
-          <Link to="/login" className={`material-symbols-outlined ${(styles.userControl, styles.userControlPerson)}`}>
+          {/* if user.isLogged is true, add a user logged controls, otherwise, add a link to login page */}
+          <Link
+            {...(user.isLogged
+              ? {
+                  "data-bs-toggle": "offcanvas",
+                  "data-bs-target": "#userControlsOffcanvas",
+                  "aria-controls": "userControlsOffcanvas",
+                  to: "#",
+                }
+              : {
+                  to: "/login",
+                })}
+            className={`material-symbols-outlined ${(styles.userControl, styles.userControlPerson)}`}
+          >
             person
           </Link>
           {!user.isLogged ? (
-            <ul className={`${styles.userLogoutLinks}`}>
+            <ul className={`${styles.userLogoutLinks} d-none d-md-block`}>
               <Link to="/login#login">
                 <li>Iniciar sesión</li>
               </Link>
@@ -34,10 +50,18 @@ export const UserControls = ({ responsiveClass = "" }) => {
               </Link>
             </ul>
           ) : (
-            <p className={`${styles.userLogInName} d-none d-md-block`}>Hola, {user.name}</p>
+            <div className={`${styles.userLogInNameContainer}`}>
+              <p className={`${styles.userLogInName} d-none d-md-block`}>Hola, {user.name}</p>
+              <div className={`${styles.dropdownContainer}`}>
+                <UserControlsLinks />
+              </div>
+            </div>
           )}
         </div>
       </div>
+      {/* use controls offcanvas */}
+
+      {user.isLogged && <UserControlsOffcanvas />}
       {/* User control shopcart (offcanvas) */}
       <ShopCartOffCanvas></ShopCartOffCanvas>
     </>
