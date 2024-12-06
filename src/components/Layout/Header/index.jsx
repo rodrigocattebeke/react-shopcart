@@ -23,12 +23,12 @@ export const Header = () => {
         const searchContainer = headerRef.current.querySelector(".search-container");
         const pxToTranslate = headerRef.current.clientHeight - searchContainer.clientHeight;
         headerRef.current.style.transform = `translateY(-${pxToTranslate - 15}px)`;
-        document.querySelector(".offcanvas").style.display = "none";
+        document.querySelectorAll(".offcanvas").forEach((offcanvas) => (offcanvas.style.display = "none"));
       } else {
         headerRef.current.style.transform = ``;
         if (!timeout.current) {
           timeout.current = setTimeout(() => {
-            document.querySelector(".offcanvas").style.display = "flex";
+            document.querySelectorAll(".offcanvas").forEach((offcanvas) => (offcanvas.style.display = "flex"));
             timeout.current = null;
           }, 1100);
         }
