@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchProductsByCategory } from "../services/fetchProductsByCategory";
 import { Loader } from "../components/Common/Loader";
 import { ErrorScreen } from "../components/Common/ErrorScreen";
-import { ProductFilter } from "../components/ProductFilter";
+import { ProductFilter } from "../components/Product/ProductFilter";
 import { CategoryIndex } from "../components/CategoryIndex";
 
 export const ViewCategoryProductsPage = () => {

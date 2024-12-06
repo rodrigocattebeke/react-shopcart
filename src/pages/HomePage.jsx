@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { HomeCatalogue } from "../components/HomeCatalogue";
-import { ProductsSale } from "../components/ProductsSale";
+import { ProductsSale } from "../components/Product/ProductsSale";
 import { Loader } from "../components/Common/Loader";
 import { HomeSliders } from "../components/Sliders";
 

@@ -14,7 +14,7 @@ export const UserControlsLinks = () => {
     <>
       <ul className={`${styles.ulControls}`}>
         <li>
-          <Link>
+          <Link to="/user">
             <span className={`material-symbols-outlined`}>account_box</span>
             Mi cuenta
           </Link>

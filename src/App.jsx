@@ -11,6 +11,7 @@ import { ScrollToTop } from "./hooks/ScrollToTop";
 import { ProductsProvider } from "./contexts/ProductsContext.jsx";
 import { SearchPage } from "./pages/SearchPage";
 import { UserProvider } from "./contexts/UserContext.jsx";
+import { UserPage } from "./pages/UserPage.jsx";
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
               <Route path="/login" element={<UserLoginPage />}></Route>
               <Route path="/products/*" element={<ProductViewPage />}></Route>
               <Route path="/search" element={<SearchPage />}></Route>
+              <Route path="/user" element={<UserPage />}></Route>
               <Route path="/*" element={<Navigate to="/" />}></Route>
             </Routes>
           </main>

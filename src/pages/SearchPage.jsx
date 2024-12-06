@@ -5,7 +5,7 @@ import { ErrorScreen } from "../components/Common/ErrorScreen";
 import { ProductList } from "../components/Product/ProductList";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CategoryIndex } from "../components/CategoryIndex";
-import { ProductFilter } from "../components/ProductFilter";
+import { ProductFilter } from "../components/Product/ProductFilter";
 
 export const SearchPage = () => {
   const location = useLocation();

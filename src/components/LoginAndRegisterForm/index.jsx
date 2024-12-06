@@ -5,7 +5,7 @@ import { RegisterForm } from "./RegisterForm";
 import { useLocation } from "react-router-dom";
 import { Loader } from "../Common/Loader";
 
-export const UserLoginAndRegisterForm = () => {
+export const LoginAndRegisterForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const [isLoginActive, setisLoginActive] = useState(true);
   const [isRegisterActive, setisRegisterActive] = useState(false);

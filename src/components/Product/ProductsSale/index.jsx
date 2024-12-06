@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import simpleFetch from "../../helpers/simpleFetch";
-import { apiUrls } from "../../config/apiUrls";
+import simpleFetch from "../../../helpers/simpleFetch";
+import { apiUrls } from "../../../config/apiUrls";
 import styles from "./styles.module.css";
-import { OnlineSaleProductCard } from "../Product/OnlineSaleProductCard";
-import { CountdownTimer } from "../Common/CountdownTimer";
-import { ofertaCompraOnlineImg } from "../../assets/img";
+import { OnlineSaleProductCard } from "../OnlineSaleProductCard";
+import { CountdownTimer } from "../../Common/CountdownTimer";
+import { ofertaCompraOnlineImg } from "../../../assets/img";
 
 export const ProductsSale = ({ setIsLoading }) => {
   const [carouselProductsContainerSize, setCarouselProductsContainerSize] = useState(0);
