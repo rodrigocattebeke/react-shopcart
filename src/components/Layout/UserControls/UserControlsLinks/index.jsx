@@ -10,22 +10,28 @@ export const UserControlsLinks = () => {
     logOut();
   };
 
+  const closeOffcanvas = (e) => {
+    if (e.target.closest(".offcanvas")) {
+      e.target.closest(".offcanvas").querySelector(".offcanvas-header").querySelector(".btn-close").click();
+    }
+  };
+
   return (
     <>
       <ul className={`${styles.ulControls}`}>
-        <li>
+        <li onClick={closeOffcanvas}>
           <Link to="/user">
             <span className={`material-symbols-outlined`}>account_box</span>
             Mi cuenta
           </Link>
         </li>
-        <li>
+        <li onClick={closeOffcanvas}>
           <Link>
             <span className={`material-symbols-outlined`}>order_approve</span>
             Mis pedidos
           </Link>
         </li>
-        <li>
+        <li onClick={closeOffcanvas}>
           <Link>
             <span className={`material-symbols-outlined`}>shopping_bag</span>
             Mi carrito

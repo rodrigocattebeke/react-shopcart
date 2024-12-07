@@ -19,21 +19,23 @@ export const ProductCartInfo = ({ product = {}, isModifyActive = true }) => {
     modifyProductQuantity(updatedProduct);
   };
 
-  const closeOffcanvas = () => {
-    document.querySelector(".offcanvas-header .btn-close").click();
+  const closeOffcanvas = (e) => {
+    e.target.closest(".offcanvas").querySelector(".offcanvas-header").querySelector(".btn-close").click();
   };
 
   let borderBottom = false;
   if (cartState.cartProducts.length > 1) borderBottom = true;
 
   return (
-    <div className={`${styles.productContainer} row py-3 ${borderBottom ? "border-top" : ""}`} key={product.id} onClick={closeOffcanvas}>
+    <div className={`${styles.productContainer} row py-3 ${borderBottom ? "border-top" : ""}`} key={product.id}>
       <div className={`${isModifyActive ? "col-2" : "col-4"}`}>
         <img src={product.image} alt={product.title} className={`${styles.productImg}`}></img>
       </div>
       <div className="col-8">
         <Link to={`/products/${product.id}`} className="product-link">
-          <p className={styles.productTitle}>{product.title}</p>
+          <p className={styles.productTitle} onClick={closeOffcanvas}>
+            {product.title}
+          </p>
         </Link>
         <p className={`${styles.productPrice} small my-0`}>Gs. {moneyFormat(dolarToPYG(product.price))}</p>
         <div className="d-flex gap-1">

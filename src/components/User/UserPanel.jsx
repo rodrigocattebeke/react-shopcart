@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { CategoryIndex } from "../CategoryIndex";
 
 export const UserPanel = () => {
   const { user } = useContext(UserContext);
@@ -9,6 +10,13 @@ export const UserPanel = () => {
       <p>Necesitas iniciar sesión</p>
     </div>
   ) : (
-    <div>Aqui ira el panel de usuario de {user?.name}</div>
+    <>
+      <section className="container-fluid">
+        <div className="container">
+          <CategoryIndex></CategoryIndex>
+        </div>
+      </section>
+      <section className="container"></section>
+    </>
   );
 };

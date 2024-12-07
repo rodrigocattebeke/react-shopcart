@@ -12,6 +12,11 @@ const removeBodyStyles = () => {
   bodyStyles.paddingRight = "0";
 };
 
+const closeOffcanvas = () => {
+  const offCanvas = document.querySelector(`${styles.offCanvas}`);
+  offCanvas.classList.remove("show");
+};
+
 export const ShopCartOffCanvas = () => {
   const { cartState, getTotalPrice } = useContext(CartContext);
 

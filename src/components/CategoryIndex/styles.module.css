@@ -1,13 +1,13 @@
-.category{
+.section{
     font-size: 1rem;
     margin-right: .3rem;
 }
 
-.category::marker{
+.section::marker{
     content: none;
 }
 
-.category > a{
+.section > a{
     text-decoration: none;
 
 }
@@ -20,7 +20,7 @@
     background-color: var(--background-color-secondary-transparent);
 }
 
-.prevCategory::after{
+.prevSection::after{
     content: "chevron_right";
     font-size: .9rem;
     font-family: "Material Symbols Outlined";
