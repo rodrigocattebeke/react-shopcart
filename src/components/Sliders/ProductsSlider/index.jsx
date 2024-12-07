@@ -154,7 +154,7 @@ export const ProductsSlider = ({ products = null }) => {
 
         {/* slider arrow controls */}
         <div
-          className={`${styles.controlArrowContainer}`}
+          className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerLeft}`}
           onClick={() => {
             handlesliderArrows("back");
           }}

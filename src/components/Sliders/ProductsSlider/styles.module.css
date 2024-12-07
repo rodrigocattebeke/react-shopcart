@@ -28,6 +28,10 @@
     z-index: 10;
 }
 
+.controlArrowContainerLeft > span{
+    width: 1.2rem;
+}
+
 .controlArrowContainerRight{
     left: auto;
     right: 15px;

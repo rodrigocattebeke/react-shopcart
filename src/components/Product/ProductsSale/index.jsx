@@ -185,7 +185,7 @@ export const ProductsSale = ({ setIsLoading }) => {
 
             {/* carousel arrow controls */}
             <div
-              className={`${styles.controlArrowContainer}`}
+              className={`${styles.controlArrowContainer + " " + styles.controlArrowContainerLeft}`}
               onClick={() => {
                 handleCarouselArrows("back");
               }}

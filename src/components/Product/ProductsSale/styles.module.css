@@ -52,6 +52,8 @@
     width: 1.5rem;
     height: 1.5rem;
     font-size: 1.5rem;
+    line-height: 1;
+
 }
 
 .controlArrowContainer{
@@ -69,6 +71,11 @@
     cursor: pointer;
     z-index: 10;
 }
+
+.controlArrowContainerLeft > span{
+    width: 1.2rem;
+}
+
 
 .controlArrowContainerRight{
     left: auto;
