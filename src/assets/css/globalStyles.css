@@ -16,7 +16,8 @@
     --font-primary-color: rgb(0, 0, 0);
     --font-secondary-color: rgb(120, 118, 118);
     --font-tertiary-color: rgb(255, 255, 255);
-    --font-page-primary-color: rgb(220, 0, 51);
+    --font-page-color: rgb(220, 0, 51);
+    --font-page-color-hover: rgb(206, 0, 48);
     --font-price-color: rgb(0, 0, 0);
 
     /* ICONS COLORS */
@@ -30,6 +31,9 @@
 
     /* SECONDARY COLORS */
     --secondary-color: rgb(171, 171, 171);
+
+    /* Tertiary color */
+    --tertiary-color: rgb(0, 0, 0);
 
     /* LOADER COLORS */
     --loader-color-1: rgb(220, 0, 51);

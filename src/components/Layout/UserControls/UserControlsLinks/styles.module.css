@@ -20,5 +20,5 @@
 }
 
 .ulControls > li > a:hover{
-    color: var(--font-page-primary-color);
+    color: var(--font-page-color-hover);
 }

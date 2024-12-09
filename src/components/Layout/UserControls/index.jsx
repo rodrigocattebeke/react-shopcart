@@ -50,8 +50,8 @@ export const UserControls = ({ responsiveClass = "" }) => {
               </Link>
             </ul>
           ) : (
-            <div className={`${styles.userLogInNameContainer}`}>
-              <p className={`${styles.userLogInName} d-none d-md-block`}>Hola, {user.name}</p>
+            <div className={`${styles.userLogInNameContainer} d-none d-md-flex`}>
+              <p className={`${styles.userLogInName}`}>Hola, {user.name}</p>
               <div className={`${styles.dropdownContainer}`}>
                 <UserControlsLinks />
               </div>

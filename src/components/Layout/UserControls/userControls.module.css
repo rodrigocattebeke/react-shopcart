@@ -102,11 +102,10 @@
 
 .userLogInNameContainer{
     display: flex;
-    align-items: center;
+    align-items:center;
     width: min-content;
     height: 2.5rem;
     max-width: 80px;
-    padding: auto;
     text-wrap: wrap;
     cursor: pointer;
 }

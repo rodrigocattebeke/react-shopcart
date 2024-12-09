@@ -20,7 +20,7 @@ export const UserControlsLinks = () => {
     <>
       <ul className={`${styles.ulControls}`}>
         <li onClick={closeOffcanvas}>
-          <Link to="/user">
+          <Link to="/account">
             <span className={`material-symbols-outlined`}>account_box</span>
             Mi cuenta
           </Link>
