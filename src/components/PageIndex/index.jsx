@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useLocation } from "react-router-dom";
 
-export const CategoryIndex = () => {
+export const PageIndex = () => {
   const location = useLocation();
   const [locationSections, setLocationSections] = useState(null);
   const [pathNotShowedForHref, setPathNotShowedForHref] = useState(null);
@@ -56,7 +56,7 @@ export const CategoryIndex = () => {
     ""
   ) : (
     <div className={`${styles.indexContainer} z-3`}>
-      <div className="container">
+      <div className="container-lg">
         <ul className="d-flex m-0">
           <li className={`${styles.prevSection + " " + styles.section}`}>
             <a href="/">Inicio</a>

@@ -1,5 +1,5 @@
 import { UserPanel } from "../components/User/UserPanel";
 
-export const UserPage = () => {
+export const UserAccountPage = () => {
   return <UserPanel />;
 };

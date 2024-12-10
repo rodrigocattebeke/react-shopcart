@@ -4,7 +4,7 @@ import { Loader } from "../components/Common/Loader";
 import { ErrorScreen } from "../components/Common/ErrorScreen";
 import { ProductList } from "../components/Product/ProductList";
 import { ProductsContext } from "../contexts/ProductsContext";
-import { CategoryIndex } from "../components/CategoryIndex";
+import { PageIndex } from "../components/PageIndex";
 import { ProductFilter } from "../components/Product/ProductFilter";
 
 export const SearchPage = () => {
@@ -49,7 +49,7 @@ export const SearchPage = () => {
     <ErrorScreen errorMessage={`No se encontraron resultados para: "${searched}"`} />
   ) : (
     <div className="container-fluid p-0">
-      <CategoryIndex />
+      <PageIndex />
       <div className="container">
         <p className="fs-3 my-3">Resultados de búsqueda para: {`"${searched}"`}</p>
       </div>

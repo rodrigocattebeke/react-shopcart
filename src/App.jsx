@@ -11,7 +11,8 @@ import { ScrollToTop } from "./hooks/ScrollToTop";
 import { ProductsProvider } from "./contexts/ProductsContext.jsx";
 import { SearchPage } from "./pages/SearchPage";
 import { UserProvider } from "./contexts/UserContext.jsx";
-import { UserPage } from "./pages/UserPage.jsx";
+import { UserAccountPage } from "./pages/UserAccountPage.jsx";
+import { UserPersonalInformationPage } from "./pages/UserPersonalInformationPage.jsx";
 
 function App() {
   const location = useLocation();
@@ -28,14 +29,15 @@ function App() {
           {!hideHeaderLocations.includes(location.pathname) && <Header />}
           <main className="container-fluid p-0 min-vh-100">
             <Routes>
-              <Route path="/" element={<HomePage />}></Route>
-              <Route path="/category/*" element={<ViewCategoryProductsPage />}></Route>
-              <Route path="/checkout" element={<CheckoutPage />}></Route>
-              <Route path="/login" element={<UserLoginPage />}></Route>
-              <Route path="/products/*" element={<ProductViewPage />}></Route>
-              <Route path="/search" element={<SearchPage />}></Route>
-              <Route path="/account" element={<UserPage />}></Route>
-              <Route path="/*" element={<Navigate to="/" />}></Route>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/account" element={<UserAccountPage />} />
+              <Route path="/account/personal-information" element={<UserPersonalInformationPage />} />
+              <Route path="/category/*" element={<ViewCategoryProductsPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/login" element={<UserLoginPage />} />
+              <Route path="/products/*" element={<ProductViewPage />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </main>
           {!hideFooterLocations.includes(location.pathname) && <Footer />}

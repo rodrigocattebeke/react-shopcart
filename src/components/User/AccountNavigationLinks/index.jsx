@@ -12,7 +12,7 @@ export const AccountNavigationLinks = () => {
           </Link>
         </li>
         <li className="list-group-item">
-          <Link>
+          <Link to="/account/personal-information">
             <span className="material-symbols-outlined">id_card</span>
             <p>Información</p>
           </Link>

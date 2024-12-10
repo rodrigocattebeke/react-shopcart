@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CategoryIndex } from "../../CategoryIndex";
+import { PageIndex } from "../../PageIndex";
 import { UserContext } from "../../../contexts/UserContext";
 import { AccountNavigationLinks } from "../AccountNavigationLinks";
 import { Link } from "react-router-dom";
@@ -16,10 +16,10 @@ export const UserPanel = () => {
   ) : (
     <>
       <section className="container-fluid p-0">
-        <CategoryIndex></CategoryIndex>
+        <PageIndex />
       </section>
-      <section className="container-lg mt-5">
-        <div className="row">
+      <section className="container-lg mt-5 p-0">
+        <div className="row m-0">
           <aside className="container col-4 d-none d-lg-block">
             <AccountNavigationLinks />
           </aside>
@@ -36,7 +36,7 @@ export const UserPanel = () => {
                 </Link>
               </div>
               <div className={`${styles.linkContainer}`}>
-                <Link>
+                <Link to={"/account/personal-information"}>
                   <span className="material-symbols-outlined">id_card</span>
                   <p>Información</p>
                 </Link>

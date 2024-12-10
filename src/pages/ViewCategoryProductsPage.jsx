@@ -5,7 +5,7 @@ import { fetchProductsByCategory } from "../services/fetchProductsByCategory";
 import { Loader } from "../components/Common/Loader";
 import { ErrorScreen } from "../components/Common/ErrorScreen";
 import { ProductFilter } from "../components/Product/ProductFilter";
-import { CategoryIndex } from "../components/CategoryIndex";
+import { PageIndex } from "../components/PageIndex";
 
 export const ViewCategoryProductsPage = () => {
   const location = useLocation();
@@ -48,7 +48,7 @@ export const ViewCategoryProductsPage = () => {
         <ErrorScreen errorMessage="No se encontraron productos para esta categoría." />
       ) : (
         <>
-          <CategoryIndex />
+          <PageIndex />
           <div className="container my-3 z-3 position-relative">
             <p className="fs-2 m-0">{category}</p>
           </div>
